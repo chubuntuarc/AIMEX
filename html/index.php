@@ -425,10 +425,9 @@
       <div class="box-row">
         <div class="box-cell">
           <div class="box-inner padding">
-            
+            <div class="row">
 
-  <div class="row">
-   
+<!--   Sección superior de vista de dinero - - - - - - - - - - - - - - - - - - - - - - - - - --> 
     <!--Monto de facturación-->
     <div class="col-lg-3 col-md-6 col-sm-12">
       <div class="card" id="imagenes_superiores">
@@ -437,54 +436,64 @@
             <img src="images/monto_facturacion.png">
           </button>
           <div id="titulos_superiores">
-            <label><h4>Monto de facturación</h4></label>
+            <label><h4>Facturas de Clientes</h4></label>
           </div>
           <div id="cantidades_superiores">
             <label><h4>
+              <!--Script para consultar el total facturado-->
                 <?php 
-                $sql="SELECT sum(T1.[TotalSumSy]) as Total FROM OINV T0  INNER JOIN INV1 T1 ON T0.DocEntry = T1.DocEntry INNER JOIN OSLP T2 ON T0.SlpCode = T2.SlpCode WHERE T2.[U_CODIGO_USA] = 5113 AND  T0.[DocDate] >= '2015-01-01' AND  T0.[DocDate] <= '2015-12-31' AND  T1.[TargetType] <> 14";
-                $res = odbc_exec($conn, $sql);
-                echo number_format(odbc_result($res, "Total"), 2);
-                odbc_close($conn); 
+                $Consulta_Monto_Factura="SELECT sum(T1.[TotalSumSy]) as Total FROM OINV T0  INNER JOIN INV1 T1 ON T0.DocEntry = T1.DocEntry INNER JOIN OSLP T2 ON T0.SlpCode = T2.SlpCode WHERE T2.[U_CODIGO_USA] = 5113 AND  T0.[DocDate] >= '2015-01-01' AND  T0.[DocDate] <= '2015-12-31' AND  T1.[TargetType] <> 14";
+                $Resultado_Consulta = odbc_exec($Conexion_SQL, $Consulta_Monto_Factura);
+                $Monto_Total = odbc_result($Resultado_Consulta, "Total");
+                echo '$ ' . number_format($Monto_Total, 2);
+                odbc_close($Conexion_SQL); 
                 ?>
+              <!--/Script consulta total facturado-->
             </h4></label> 
           </div>       
         </form>
       </div>
-      <div class="card">
-        <!-- /Monto de facturación -->
-      </div>
     </div>
+    <!-- /Monto de facturación -->
 
-     <!--Ordenes de compra-->
+     <!--Ordenes de venta-->
     <div class="col-lg-3 col-md-6 col-sm-12">
       <div class="card" id="imagenes_superiores">
         <form>
           <button md-ink-ripple class="md-btn md-raised pull-left p-h-md indigo">
-            <img src="images/ordenes_compra.png">
+            <img src="images/monto_facturacion.png">
           </button>
           <div id="titulos_superiores">
-            <label><h4>Ordenes de compra</h4></label>
+            <label><h4>Ordenes de Venta</h4></label>
           </div>
           <div id="cantidades_superiores">
-            <label><h4>$5000</h4></label> 
+            <label><h4>
+              <!--Script para consultar el total de ordenes de venta-->
+                <?php 
+                $Consulta_Monto_Factura="SELECT SUM ( T2.[TotalSumSy] ) as Total FROM ORDR T0  INNER JOIN OSLP T1 ON T0.SlpCode = T1.SlpCode INNER JOIN RDR1 T2 ON T0.DocEntry = T2.DocEntry WHERE T0.[DocDate] >= '2015-01-01' AND  T0.[DocDate] <= '2015-12-31' AND T0.[CANCELED] = 'N' AND  T1.[U_CODIGO_USA]  = 5113";
+                $Resultado_Consulta = odbc_exec($Conexion_SQL, $Consulta_Monto_Factura);
+                $Monto_Total = odbc_result($Resultado_Consulta, "Total");
+                echo '$ ' . number_format($Monto_Total, 2);
+                odbc_close($Conexion_SQL); 
+                ?>
+              <!--/Script consulta total de ordenes de venta-->
+            </h4></label> 
           </div>       
         </form>
       </div>
-      <div class="card">
-        <!-- /Ordenes de compra-->
-          </div>
-        </div>
+    </div>
+        <!-- /Ordenes de venta-->
+          
 
         <!--Cotizaciones-->
     <div class="col-lg-3 col-md-6 col-sm-12">
       <div class="card" id="imagenes_superiores">
         <form>
-          <button md-ink-ripple class="md-btn md-raised pull-left p-h-md blue">
-            <img src="images/cotizaciones.png">
+          <button md-ink-ripple class="md-btn md-raised pull-left p-h-md cyan">
+            <img src="images/monto_facturacion.png">
           </button>
           <div id="titulos_superiores">
-            <label><h4>Cotizaciones</h4></label>
+            <label><h4>Ofertas de Venta</h4></label>
           </div>
           <div id="cantidades_superiores">
             <label><h4>$5000</h4></label> 
@@ -500,11 +509,11 @@
     <div class="col-lg-3 col-md-6 col-sm-12">
       <div class="card" id="imagenes_superiores">
         <form>
-          <button md-ink-ripple class="md-btn md-raised pull-left p-h-md red">
-            <img src="images/back_order.png">
+          <button md-ink-ripple class="md-btn md-raised pull-left p-h-md purple">
+            <img src="images/monto_facturacion.png">
           </button>
           <div id="titulos_superiores">
-            <label><h4>Back order</h4></label>
+            <label><h4>Back Order</h4></label>
           </div>
           <div id="cantidades_superiores">
             <label><h4>$5000</h4></label> 
@@ -515,6 +524,8 @@
         <!-- /Back order-->
       </div>
       </div>
+
+<!--  /Sección superior de vista de dinero - - - - - - - - - - - - - - - - - - - - - - - - - --> 
 
      <!-- Gráfica de ventas-->
       <div class="col-lg-9 col-md-6 col-sm-12">
