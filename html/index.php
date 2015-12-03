@@ -456,7 +456,7 @@
     </div>
     <!-- /Monto de facturación -->
 
-     <!--Ordenes de venta-->
+    <!--Ordenes de venta-->
     <div class="col-lg-3 col-md-6 col-sm-12">
       <div class="card" id="imagenes_superiores">
         <form>
@@ -482,10 +482,9 @@
         </form>
       </div>
     </div>
-        <!-- /Ordenes de venta-->
-          
+    <!-- /Ordenes de venta-->
 
-        <!--Cotizaciones-->
+    <!--Ofertas de venta-->
     <div class="col-lg-3 col-md-6 col-sm-12">
       <div class="card" id="imagenes_superiores">
         <form>
@@ -496,14 +495,22 @@
             <label><h4>Ofertas de Venta</h4></label>
           </div>
           <div id="cantidades_superiores">
-            <label><h4>$5000</h4></label> 
+            <label><h4>
+              <!--Script para consultar el total de ofertas de venta-->
+                <?php 
+                $Consulta_Monto_Factura="SELECT SUM(T1.[TotalSumSy]) AS Total FROM OQUT T0  INNER JOIN QUT1 T1 ON T0.DocEntry = T1.DocEntry INNER JOIN OSLP T2 ON T0.SlpCode = T2.SlpCode WHERE T0.[DocDate] >= '01-01-2015' AND  T0.[DocDate] <= '12-31-2015' AND  T2.[U_CODIGO_USA]  = 5113";
+                $Resultado_Consulta = odbc_exec($Conexion_SQL, $Consulta_Monto_Factura);
+                $Monto_Total = odbc_result($Resultado_Consulta, "Total");
+                echo '$ ' . number_format($Monto_Total, 2);
+                odbc_close($Conexion_SQL); 
+                ?>
+              <!--/Script consulta total de ofertas de venta-->
+            </h4></label> 
           </div>       
         </form>
       </div>
-      <div class="card">
-        <!-- /Cotizaciones-->
-      </div>
     </div>
+    <!-- /Ofertas de venta-->
 
     <!--Back order-->
     <div class="col-lg-3 col-md-6 col-sm-12">
@@ -516,14 +523,23 @@
             <label><h4>Back Order</h4></label>
           </div>
           <div id="cantidades_superiores">
-            <label><h4>$5000</h4></label> 
+            <label><h4>
+              <!--Script para consultar el total de back order-->
+                <?php 
+                $Consulta_Monto_Factura="SELECT SUM( T1.[OpenQty] *  T1.[Price]  ) as Total FROM ORDR T0  INNER JOIN RDR1 T1 ON T0.DocEntry = T1.DocEntry INNER JOIN OSLP T2 ON T0.SlpCode = T2.SlpCode WHERE T0.[DocDate] >= '2015-01-01' AND T0.[DocDate] <= '2015-12-31' AND   T1.[OpenQty] <> 0 AND  T2.[U_CODIGO_USA]  = 5113";
+                $Resultado_Consulta = odbc_exec($Conexion_SQL, $Consulta_Monto_Factura);
+                $Monto_Total = odbc_result($Resultado_Consulta, "Total");
+                echo '$ ' . number_format($Monto_Total, 2);
+                odbc_close($Conexion_SQL); 
+                ?>
+              <!--/Script consulta total de back order-->
+            </h4></label> 
           </div>       
         </form>
       </div>
-      <div class="card">
-        <!-- /Back order-->
-      </div>
-      </div>
+    </div>
+    <!-- /Back order-->
+      
 
 <!--  /Sección superior de vista de dinero - - - - - - - - - - - - - - - - - - - - - - - - - --> 
 
