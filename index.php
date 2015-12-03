@@ -1,4 +1,3 @@
-<?php include('php/conexion.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -443,11 +442,17 @@
             <label><h4>
                 <!--Consulta sql para obtener el monto de facturación-->
                 <?php 
-                $sql="SELECT sum(T1.[TotalSumSy]) FROM OINV T0  INNER JOIN INV1 T1 ON T0.DocEntry = T1.DocEntry INNER JOIN OSLP T2 ON T0.SlpCode =2.SlpCode WHERE T2.[U_CODIGO_USA] = 5113 AND  T0.[DocDate] >= '2015-01-01' AND  T0.[DocDate] <= '2015-12-31'";
-                $rs=odbc_exec($conn,$sql);
-                $total_facturado = odbc_result($rs, 0);
-                echo $total_facturado;
-                 ?>
+                include 'conexion.php';
+                //$sql="SELECT sum(T1.[TotalSumSy]) AS Total FROM OINV T0  INNER JOIN INV1 T1 ON T0.DocEntry = T1.DocEntry INNER JOIN OSLP T2 ON T0.SlpCode =2.SlpCode WHERE T2.[U_CODIGO_USA] = 5113 AND  T0.[DocDate] >= '2015-01-01' AND  T0.[DocDate] <= '2015-12-31'";
+                //$result=odbc_exec($conn,$sql)or die(exit("Error en odbc_exec"));
+                //print odbc_result_all($result,"border=1");$sql="SELECT * FROM ORDR WHERE NumAtCard LIKE '%".$_POST["Referencia"]."%'";
+                $sql="SELECT TOP 1 DocNum FROM ORDR WHERE DocNum = 1001";
+                $rs=odbc_exec($conn,$sql);          
+                while (odbc_fetch_row($rs))
+                {    
+                    $DocDate = date(odbc_result($rs,"DocNum"));
+                    }
+                odbc_close($conn);                 ?>
             </h4></label> 
           </div>       
         </form>
