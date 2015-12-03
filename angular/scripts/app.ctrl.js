@@ -16,8 +16,8 @@ angular.module('app')
       isSmartDevice( $window ) && angular.element($window.document.body).addClass('smart');
       // config
       $scope.app = {
-        name: 'Materil',
-        version: '1.0.2',
+        name: 'AIMCO',
+        version: '0.0.1',
         // for chart colors
         color: {
           primary: '#3f51b5',
