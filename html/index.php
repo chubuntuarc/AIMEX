@@ -428,6 +428,7 @@
             <div class="row">
 
 <!--   Sección superior de vista de dinero - - - - - - - - - - - - - - - - - - - - - - - - - --> 
+
     <!--Monto de facturación-->
     <div class="col-lg-3 col-md-6 col-sm-12">
       <div class="card" id="imagenes_superiores">
@@ -543,6 +544,7 @@
 
 <!--  /Sección superior de vista de dinero - - - - - - - - - - - - - - - - - - - - - - - - - --> 
 
+<!--   Sección de charts  - - - - - - - -  - - - - - - - - - - - - - - - - - - - - - - - - - --> 
      <!-- Gráfica de ventas-->
       <div class="col-lg-9 col-md-6 col-sm-12">
         <div class="card" id="imagenes_superiores">
@@ -558,6 +560,8 @@
         </div>
       </div>  
           <!-- / Gráfica de ventas-->
+
+<!--  /Sección de charts  - - - - - - - -  - - - - - - - - - - - - - - - - - - - - - - - - - --> 
 
   <!-- / content -->
 
