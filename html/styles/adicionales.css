@@ -19,24 +19,9 @@
 	top: 7px;
 }
 
-#tabla_ventas h1
+#tabla_ventas h4
 {
-	margin: 0;
-  box-sizing: border-box;
-  bottom: 0;
-  width: 100%;
-  padding: 10px;
-  text-align: left;
-  background-color: #525252;
-  color: #eee;
-}
-
-#tabla_ventas section
-{
-	margin: 10px;
-}
-
-#tabla_ventas body
-{
-	margin: 0;
+	position: relative;
+	left: 20px;
+	font-size: 30px;
 }

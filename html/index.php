@@ -546,16 +546,43 @@
 
 <!--   Sección de charts  - - - - - - - -  - - - - - - - - - - - - - - - - - - - - - - - - - --> 
      <!-- Gráfica de ventas-->
-      <div class="col-lg-9 col-md-6 col-sm-12">
+      <div class="col-lg-12 col-md-12 col-sm-12">
         <div class="card" id="imagenes_superiores">
           <form>
-            <div id="tabla_ventas" onload="drawChart()">
-              <h1>Histórico de ventas</h1>
-              <section id="chart">
-                <canvas></canvas>
-              </section>
-              <footer>&copy; Random Footer Here</footer>
-            </div>       
+            <div id="tabla_ventas">
+              <label><h4>Histórico de Ventas</h4></label>
+              <canvas id="canvas" height="450" width="1200"></canvas>
+            </div>
+            <script>
+                var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
+
+                var barChartData = {
+                  labels : ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"],
+                  datasets : [
+                    {
+                      fillColor : "rgba(220,220,220,0.5)",
+                      strokeColor : "rgba(220,220,220,0.8)",
+                      highlightFill: "rgba(220,220,220,0.75)",
+                      highlightStroke: "rgba(220,220,220,1)",
+                      data : [100,90,80,70,60,50,40,30,20,10,0,0]
+                    },
+                    {
+                      fillColor : "rgba(151,187,205,0.5)",
+                      strokeColor : "rgba(151,187,205,0.8)",
+                      highlightFill : "rgba(151,187,205,0.75)",
+                      highlightStroke : "rgba(151,187,205,1)",
+                      data : [0,0,10,20,30,40,50,60,70,80,90,100]
+                    }
+                  ]
+
+                }
+                window.onload = function(){
+                  var ctx = document.getElementById("canvas").getContext("2d");
+                  window.myBar = new Chart(ctx).Bar(barChartData, {
+                    responsive : true
+                  });
+                }
+            </script>
           </form>
         </div>
       </div>  
