@@ -433,8 +433,14 @@
     <div class="col-lg-3 col-md-6 col-sm-12">
       <div class="card" id="imagenes_superiores">
         <form>
-          <button md-ink-ripple class="md-btn md-raised pull-left p-h-md green">
+          <button  class="md-btn md-raised pull-left p-h-md green" onclick="cambiarTitulo()">
             <img src="images/monto_facturacion.png">
+            <script> //Script que modifica el titulo de la gráfica
+            var Color_Grafica = "#4CAF50";
+            function cambiarTitulo() {
+                document.getElementById("Titulo_Grafica").innerHTML = "Facturas de Clientes";
+            }
+            </script>
           </button>
           <div id="titulos_superiores">
             <label><h4>Facturas de Clientes</h4></label>
@@ -443,7 +449,7 @@
             <label><h4>
               <!--Script para consultar el total facturado-->
                 <?php 
-                $Consulta_Monto_Factura="SELECT sum(T1.[TotalSumSy]) as Total FROM OINV T0  INNER JOIN INV1 T1 ON T0.DocEntry = T1.DocEntry INNER JOIN OSLP T2 ON T0.SlpCode = T2.SlpCode WHERE T2.[U_CODIGO_USA] = 5113 AND  T0.[DocDate] >= '2015-01-01' AND  T0.[DocDate] <= '2015-12-31' AND  T1.[TargetType] <> 14";
+                $Consulta_Monto_Factura="SELECT sum(T1.[TotalSumSy]) as Total FROM OINV T0  INNER JOIN INV1 T1 ON T0.DocEntry = T1.DocEntry INNER JOIN OSLP T2 ON T0.SlpCode = T2.SlpCode WHERE T2.[U_CODIGO_USA] = ".$Usuario_Actual." AND  T0.[DocDate] >= ".$Fecha_Inicial." AND  T0.[DocDate] <= ".$Fecha_Final." AND  T1.[TargetType] <> 14";
                 $Resultado_Consulta = odbc_exec($Conexion_SQL, $Consulta_Monto_Factura);
                 $Monto_Total = odbc_result($Resultado_Consulta, "Total");
                 echo '$ ' . number_format($Monto_Total, 2);
@@ -461,8 +467,14 @@
     <div class="col-lg-3 col-md-6 col-sm-12">
       <div class="card" id="imagenes_superiores">
         <form>
-          <button md-ink-ripple class="md-btn md-raised pull-left p-h-md indigo">
+          <button md-ink-ripple class="md-btn md-raised pull-left p-h-md indigo" onclick="cambiarTitulo2()">
             <img src="images/monto_facturacion.png">
+            <script> //Script que modifica el titulo de la gráfica
+            function cambiarTitulo2() {
+                document.getElementById("Titulo_Grafica").innerHTML = "Ordenes de Venta";
+                var Color_Grafica = "red"
+            }
+            </script>
           </button>
           <div id="titulos_superiores">
             <label><h4>Ordenes de Venta</h4></label>
@@ -471,7 +483,7 @@
             <label><h4>
               <!--Script para consultar el total de ordenes de venta-->
                 <?php 
-                $Consulta_Monto_Factura="SELECT SUM ( T2.[TotalSumSy] ) as Total FROM ORDR T0  INNER JOIN OSLP T1 ON T0.SlpCode = T1.SlpCode INNER JOIN RDR1 T2 ON T0.DocEntry = T2.DocEntry WHERE T0.[DocDate] >= '2015-01-01' AND  T0.[DocDate] <= '2015-12-31' AND T0.[CANCELED] = 'N' AND  T1.[U_CODIGO_USA]  = 5113";
+                $Consulta_Monto_Factura="SELECT SUM ( T2.[TotalSumSy] ) as Total FROM ORDR T0  INNER JOIN OSLP T1 ON T0.SlpCode = T1.SlpCode INNER JOIN RDR1 T2 ON T0.DocEntry = T2.DocEntry WHERE T0.[DocDate] >= ".$Fecha_Inicial." AND  T0.[DocDate] <= ".$Fecha_Final." AND T0.[CANCELED] = 'N' AND  T1.[U_CODIGO_USA]  = ".$Usuario_Actual."";
                 $Resultado_Consulta = odbc_exec($Conexion_SQL, $Consulta_Monto_Factura);
                 $Monto_Total = odbc_result($Resultado_Consulta, "Total");
                 echo '$ ' . number_format($Monto_Total, 2);
@@ -489,8 +501,13 @@
     <div class="col-lg-3 col-md-6 col-sm-12">
       <div class="card" id="imagenes_superiores">
         <form>
-          <button md-ink-ripple class="md-btn md-raised pull-left p-h-md cyan">
+          <button md-ink-ripple class="md-btn md-raised pull-left p-h-md cyan" onclick="cambiarTitulo3()">
             <img src="images/monto_facturacion.png">
+            <script> //Script que modifica el titulo de la gráfica
+            function cambiarTitulo3() {
+                document.getElementById("Titulo_Grafica").innerHTML = "Ofertas de Venta";
+            }
+            </script>
           </button>
           <div id="titulos_superiores">
             <label><h4>Ofertas de Venta</h4></label>
@@ -499,7 +516,7 @@
             <label><h4>
               <!--Script para consultar el total de ofertas de venta-->
                 <?php 
-                $Consulta_Monto_Factura="SELECT SUM(T1.[TotalSumSy]) AS Total FROM OQUT T0  INNER JOIN QUT1 T1 ON T0.DocEntry = T1.DocEntry INNER JOIN OSLP T2 ON T0.SlpCode = T2.SlpCode WHERE T0.[DocDate] >= '01-01-2015' AND  T0.[DocDate] <= '12-31-2015' AND  T2.[U_CODIGO_USA]  = 5113";
+                $Consulta_Monto_Factura="SELECT SUM(T1.[TotalSumSy]) AS Total FROM OQUT T0  INNER JOIN QUT1 T1 ON T0.DocEntry = T1.DocEntry INNER JOIN OSLP T2 ON T0.SlpCode = T2.SlpCode WHERE T0.[DocDate] >= ".$Fecha_Inicial." AND  T0.[DocDate] <= ".$Fecha_Final." AND  T2.[U_CODIGO_USA]  = ".$Usuario_Actual."";
                 $Resultado_Consulta = odbc_exec($Conexion_SQL, $Consulta_Monto_Factura);
                 $Monto_Total = odbc_result($Resultado_Consulta, "Total");
                 echo '$ ' . number_format($Monto_Total, 2);
@@ -517,8 +534,13 @@
     <div class="col-lg-3 col-md-6 col-sm-12">
       <div class="card" id="imagenes_superiores">
         <form>
-          <button md-ink-ripple class="md-btn md-raised pull-left p-h-md purple">
+          <button md-ink-ripple class="md-btn md-raised pull-left p-h-md purple" onclick="cambiarTitulo4()">
             <img src="images/monto_facturacion.png">
+            <script> //Script que modifica el titulo de la gráfica
+            function cambiarTitulo4() {
+                document.getElementById("Titulo_Grafica").innerHTML = "Back Order";
+            }
+            </script>
           </button>
           <div id="titulos_superiores">
             <label><h4>Back Order</h4></label>
@@ -527,7 +549,7 @@
             <label><h4>
               <!--Script para consultar el total de back order-->
                 <?php 
-                $Consulta_Monto_Factura="SELECT SUM( T1.[OpenQty] *  T1.[Price]  ) as Total FROM ORDR T0  INNER JOIN RDR1 T1 ON T0.DocEntry = T1.DocEntry INNER JOIN OSLP T2 ON T0.SlpCode = T2.SlpCode WHERE T0.[DocDate] >= '2015-01-01' AND T0.[DocDate] <= '2015-12-31' AND   T1.[OpenQty] <> 0 AND  T2.[U_CODIGO_USA]  = 5113";
+                $Consulta_Monto_Factura="SELECT SUM( T1.[OpenQty] *  T1.[Price]  ) as Total FROM ORDR T0  INNER JOIN RDR1 T1 ON T0.DocEntry = T1.DocEntry INNER JOIN OSLP T2 ON T0.SlpCode = T2.SlpCode WHERE T0.[DocDate] >= ".$Fecha_Inicial." AND T0.[DocDate] <= ".$Fecha_Final." AND   T1.[OpenQty] <> 0 AND  T2.[U_CODIGO_USA]  = ".$Usuario_Actual."";
                 $Resultado_Consulta = odbc_exec($Conexion_SQL, $Consulta_Monto_Factura);
                 $Monto_Total = odbc_result($Resultado_Consulta, "Total");
                 echo '$ ' . number_format($Monto_Total, 2);
@@ -550,28 +572,21 @@
         <div class="card" id="imagenes_superiores">
           <form>
             <div id="tabla_ventas">
-              <label><h4>Histórico de Ventas</h4></label>
+              <label><h5>Histórico de&nbsp;</h5></label>
+              <label><h5 id="Titulo_Grafica">Facturas de Clientes</h5></label>
               <canvas id="canvas" height="450" width="1200"></canvas>
             </div>
-            <script>
+            <script> //Script con los datos principales de la gráfica
                 var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
-
                 var barChartData = {
                   labels : ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"],
                   datasets : [
                     {
-                      fillColor : "rgba(220,220,220,0.5)",
+                      fillColor : Color_Grafica, //Color principal de las barras
                       strokeColor : "rgba(220,220,220,0.8)",
-                      highlightFill: "rgba(220,220,220,0.75)",
+                      highlightFill: "#757575",
                       highlightStroke: "rgba(220,220,220,1)",
                       data : [100,90,80,70,60,50,40,30,20,10,0,0]
-                    },
-                    {
-                      fillColor : "rgba(151,187,205,0.5)",
-                      strokeColor : "rgba(151,187,205,0.8)",
-                      highlightFill : "rgba(151,187,205,0.75)",
-                      highlightStroke : "rgba(151,187,205,1)",
-                      data : [0,0,10,20,30,40,50,60,70,80,90,100]
                     }
                   ]
 
