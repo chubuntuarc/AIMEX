@@ -39,7 +39,7 @@
             <div class="box-inner">
               <div class="p hidden-folded blue-50" style="background-image:url(images/bg.png); background-size:cover">
                 <div class="rounded w-64 bg-white inline pos-rlt">
-                  <img src="images/a0.jpg" class="img-responsive rounded">
+                  <img src="images/a0.png" class="img-responsive rounded">
                 </div>
                 <a class="block m-t-sm" ui-toggle-class="hide, show" target="#nav, #account">
                   <span class="block font-bold">Antonio Diaz Reyes</span>
@@ -53,260 +53,24 @@
               <div id="nav">
                 <nav ui-nav>
                   <ul class="nav">
-                    <li class="nav-header m-v-sm hidden-folded">
-                      UI Kits
-                    </li>
                     <li>
                       <a md-ink-ripple>
                         <span class="pull-right text-muted">
                           <i class="fa fa-caret-down"></i>
                         </span>
-                        <i class="pull-right up"><b class="badge no-bg">2</b></i>
-                        <i class="icon mdi-action-settings-input-svideo i-20"></i>
+                        <i><img src="images/menu.png"></i>
                         <span class="font-normal">Dashboard</span>
                       </a>
                       <ul class="nav nav-sub">
                         <li>
-                          <a md-ink-ripple href="index.html">Dashboard</a>
+                          <a md-ink-ripple href="index.php">Inicio</a>
                         </li>
-                        <li>
-                          <a md-ink-ripple href="dashboard.analysis.html">Analysis</a>
-                        </li>
-                        <li>
-                          <a md-ink-ripple href="dashboard.wall.html">Wall</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li>
-                      <a md-ink-ripple>
-                        <span class="pull-right text-muted">
-                          <i class="fa fa-caret-down"></i>
-                        </span>
-                        <i class="icon mdi-action-subject i-20"></i>
-                        <span class="font-normal">Components</span>
-                      </a>
-                      <ul class="nav nav-sub">
-                        <li>
-                          <a md-ink-ripple href="ui.component.arrow.html">Arrow</a>
-                        </li>
-                        <li>
-                          <a md-ink-ripple href="ui.component.badge-label.html">Badge &amp; Label</a>
-                        </li>
-                        <li>
-                          <a md-ink-ripple href="ui.component.button.html">Button</a>
-                        </li>
-                        <li>
-                          <a md-ink-ripple href="ui.component.color.html">Color</a>
-                        </li>
-                        <li>
-                          <a md-ink-ripple href="ui.component.grid.html">Grid</a>
-                        </li>
-                        <li>
-                          <a md-ink-ripple href="ui.component.icon.html">Icon</a>
-                        </li>
-                        <li>
-                          <a md-ink-ripple href="ui.component.list.html">List Group</a>
-                        </li>
-                        <li>
-                          <a md-ink-ripple href="ui.component.nav.html">Nav</a>
-                        </li>
-                        <li>
-                          <a md-ink-ripple href="ui.component.progressbar.html">Progressbar</a>
-                        </li>
-                        <li>
-                          <a md-ink-ripple href="ui.component.streamline.html">Streamline</a>
-                        </li>
-                        <li>
-                          <a md-ink-ripple href="ui.component.timeline.html">Timeline</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li>
-                      <a md-ink-ripple>
-                        <span class="pull-right text-muted">
-                          <i class="fa fa-caret-down"></i>
-                        </span>
-                        <i class="pull-right up"><b class="badge bg-success">14</b></i>
-                        <i class="icon mdi-image-flash-on i-20"></i>
-                        <span class="font-normal">Material</span>
-                      </a>
-                      <ul class="nav nav-sub">
-                        <li>
-                          <a md-ink-ripple href="ui.material.button.html">Button</a>
-                        </li>
-                        <li>
-                          <a md-ink-ripple href="ui.material.icon.html">Icon</a>
-                        </li>
-                        <li>
-                          <a md-ink-ripple href="ui.material.color.html">Color</a>
-                        </li>
-                        <li>
-                          <a md-ink-ripple href="ui.material.card.html">Card</a>
-                        </li>
-                        <li>
-                          <a md-ink-ripple href="ui.material.form.html">Form</a>
-                        </li>
-                        <li>
-                          <a md-ink-ripple href="ui.material.list.html">List</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li>
-                      <a md-ink-ripple>
-                        <span class="pull-right text-muted">
-                          <i class="fa fa-caret-down"></i>
-                        </span>
-                        <i class="icon mdi-toggle-radio-button-on i-20"></i>
-                        <span class="font-normal">Form</span>
-                      </a>
-                      <ul class="nav nav-sub">
-                        <li>
-                          <a md-ink-ripple href="ui.form.layout.html">Form Layout</a>
-                        </li>
-                        <li>
-                          <a md-ink-ripple href="ui.form.element.html">Form Element</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li>
-                      <a md-ink-ripple>
-                        <span class="pull-right text-muted">
-                          <i class="fa fa-caret-down"></i>
-                        </span>
-                        <i class="icon mdi-editor-format-list-bulleted i-20"></i>
-                        <span class="font-normal">Table</span>
-                      </a>
-                      <ul class="nav nav-sub">
-                        <li>
-                          <a md-ink-ripple href="ui.table.static.html">Static table</a>
-                        </li>
-                        <li>
-                          <a md-ink-ripple href="ui.table.datatable.html">Datatable</a>
-                        </li>
-                        <li>
-                          <a md-ink-ripple href="ui.table.footable.html">Footable</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li>
-                      <a md-ink-ripple href="ui.chart.html">
-                        <i class="pull-right up"><b class="label bg-info">NEW</b></i> 
-                        <i class="icon mdi-device-multitrack-audio i-20"></i>
-                        <span class="font-normal">Charts</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a md-ink-ripple>
-                        <span class="pull-right text-muted">
-                          <i class="fa fa-caret-down"></i>
-                        </span>
-                        <i class="icon mdi-maps-navigation i-20"></i>
-                        <span class="font-normal">Maps</span>
-                      </a>
-                      <ul class="nav nav-sub">
-                        <li>
-                          <a md-ink-ripple href="ui.map.vector.html">Vector Map</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li>
-                      <a md-ink-ripple>
-                        <span class="pull-right text-muted">
-                          <i class="fa fa-caret-down"></i>
-                        </span>
-                        <i class="icon mdi-editor-insert-drive-file i-20"></i>
-                        <span class="font-normal">Pages</span>
-                      </a>
-                      <ul class="nav nav-sub">
-                        <li>
-                          <a md-ink-ripple href="page.profile.html">
-                            <span>Profile</span>
-                          </a>
-                        </li>
-                        <li>
-                          <a md-ink-ripple href="page.settings.html">
-                            <span>Settings</span>
-                          </a>
-                        </li>
-                        <li>
-                          <a md-ink-ripple href="page.blank.html">
-                            <span>Blank</span>
-                          </a>
-                        </li>
-                        <li>
-                          <a md-ink-ripple href="signin.html">
-                            <span>Sign In</span>
-                          </a>
-                        </li>
-                        <li>
-                          <a md-ink-ripple href="signup.html">
-                            <span>Sign Up</span>
-                          </a>
-                        </li>
-                        <li>
-                          <a md-ink-ripple href="forgot-password.html">
-                            <span>Forgot Password</span>
-                          </a>
-                        </li>
-                        <li>
-                          <a md-ink-ripple href="lockme.html">
-                            <span>Lockme Screen</span>
-                          </a>
-                        </li>
-                        <li>
-                          <a md-ink-ripple href="404.html">
-                            <span>Error 404</span>
-                          </a>
-                        </li>
-                        <li>
-                          <a md-ink-ripple href="505.html">
-                            <span>Error 505</span>
-                          </a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li>
-                      <a md-ink-ripple href>
-                        <span class="pull-right text-muted">
-                          <i class="fa fa-caret-down"></i>
-                        </span>
-                        <i class="icon mdi-content-sort i-20"></i>
-                        <span>Menu</span>
-                      </a>
-                      <ul class="nav nav-sub">
-                        <li><a md-ink-ripple href>Menu levels 1</a></li>
-                        <li>
-                          <a md-ink-ripple href>
-                            <span class="pull-right text-muted">
-                              <i class="fa fa-caret-down"></i>
-                            </span>
-                            <span class="font-normal">Menu levels 2</span>
-                          </a>
-                          <ul class="nav nav-sub">
-                            <li>
-                              <a md-ink-ripple href>Menu levels 2.1</a>
-                            </li>
-                            <li>
-                              <a md-ink-ripple href>Menu levels 2.2</a>
-                            </li>
-                          </ul>          
-                        </li>        
                       </ul>
                     </li>
                     <li class="b-b b m-v-sm"></li>
                     <li>
                       <a md-ink-ripple ui-toggle-class="hide, show" target="#nav, #account">
-                        <span>Settings</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a md-ink-ripple href="page.document.html">
-                        <span>Document</span>
-                      </a>
-                    </li>
-                    <li class="m-b-sm">
-                      <a md-ink-ripple href="../angular">
-                        <span>Angular Version</span>
+                        <span>Configuración</span>
                       </a>
                     </li>
                   </ul>
@@ -318,30 +82,20 @@
                     <li>
                       <a md-ink-ripple href="page.profile.html">
                         <i class="icon mdi-action-perm-contact-cal i-20"></i>
-                        <span>My Profile</span>
+                        <span>Mi Perfil</span>
                       </a>
                     </li>
                     <li>
                       <a md-ink-ripple href="page.settings.html">
                         <i class="icon mdi-action-settings i-20"></i>
-                        <span>Settings</span>
+                        <span>Configuración</span>
                       </a>
                     </li>
                     <li>
                       <a md-ink-ripple href="lockme.html">
                         <i class="icon mdi-action-exit-to-app i-20"></i>
-                        <span>Logout</span>
+                        <span>Cerrar Sesión</span>
                       </a>
-                    </li>
-                    <li class="m-v-sm b-b b"></li>
-                    <li>
-                      <div class="nav-item" ui-toggle-class="folded" target="#aside">
-                        <label class="md-check">
-                          <input type="checkbox">
-                          <i class="purple no-icon"></i>
-                          <span class="hidden-folded">Folded aside</span>
-                        </label>
-                      </div>
                     </li>
                   </ul>
                 </nav>
@@ -354,7 +108,7 @@
             <li>
               <a href="http://themeforest.net/item/materil-responsive-admin-dashboard-template/11062969" target="_blank" md-ink-ripple>
                 <i class="icon mdi-action-help i-20"></i>
-                <span>Help &amp; Feedback</span>
+                <span>Ayuda &amp; Soporte</span>
               </a>
             </li>
           </ul>
@@ -700,11 +454,15 @@
 
 
 </div>
-
+<!--Sección de scripts - - - - - - - -  - - - - - - -  - - - - - - - - -  - - - - - - -->
+<!--Librerias de JQuery-->
 <script src="../libs/jquery/jquery/dist/jquery.js"></script>
 <script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
 <script src="../libs/jquery/waves/dist/waves.js"></script>
-
+<!--Script de la grafica de ventas-->
+<script src="scripts/tabla_ventas.js"></script>
+<!--Script de control dinamico de gráfica index-->
+<script src="scripts/datosGrafica.js"></script>
 <script src="scripts/ui-load.js"></script>
 <script src="scripts/ui-jp.config.js"></script>
 <script src="scripts/ui-jp.js"></script>
@@ -713,10 +471,6 @@
 <script src="scripts/ui-form.js"></script>
 <script src="scripts/ui-waves.js"></script>
 <script src="scripts/ui-client.js"></script>
-<script src="scripts/datosGrafica.js"></script>
-
-<!--Script de la tabla de ventas-->
-<script src="scripts/tabla_ventas.js"></script>
-
+<!--/Sección de scripts - - - - - - - -  - - - - - - -  - - - - - - - - -  - - - - - - -->
 </body>
 </html>

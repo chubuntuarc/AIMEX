@@ -1,11 +1,6 @@
 <?php 
-	//Conexión a SQL Server usando el driver ODBC de Windows.
-	$Conexion_SQL = odbc_connect('AIMCO','sa','Sql@dmin1', SQL_CUR_USE_ODBC);
-	if ($Conexion_SQL == FALSE){
-	echo ('Error en la conexion' . odbc_error());
-	}
 
-	//Variables globales del sistema.
+//Variables globales del sistema.   -----------------------------------------------------------------------------------------------
 	//ID del usuario actual.
 	$Usuario_Actual = "5113";
 	global $Usuario_Actual;
@@ -16,6 +11,16 @@
 	$Fecha_Final = "'2015-12-31'";
 	global $Fecha_Final;
 
+//Fin de Variables globales del sistema.   -----------------------------------------------------------------------------------------------
+
+//Conexión a SQL Server usando el driver ODBC de Windows.  ------------------------------------------------------------------------------
+	$Conexion_SQL = odbc_connect('AIMCO','sa','Sql@dmin1', SQL_CUR_USE_ODBC);
+	if ($Conexion_SQL == FALSE){
+	echo ('Error en la conexion' . odbc_error());
+	}
+//Fin Conexión a SQL Server usando el driver ODBC de Windows  ---------------------------------------------------------------------------
+
+//Sección de valores parte superior index   --------------------------------------------------------------------------------------------
 	//Consulta de facturas de Clientes
 	$Consulta_Monto_Factura ="SELECT sum(T1.[TotalSumSy]) as Total FROM OINV T0  INNER JOIN INV1 T1 ON T0.DocEntry = T1.DocEntry INNER JOIN OSLP T2 ON T0.SlpCode = T2.SlpCode WHERE T2.[U_CODIGO_USA] = ".$Usuario_Actual." AND  T0.[DocDate] >= ".$Fecha_Inicial." AND  T0.[DocDate] <= ".$Fecha_Final." AND  T1.[TargetType] <> 14";
 	$Resultado_Consulta = odbc_exec($Conexion_SQL, $Consulta_Monto_Factura);
@@ -37,10 +42,12 @@
     $ofertas =  '$ ' . number_format($Monto_Total3, 2);
     odbc_close($Conexion_SQL); 
 
-    //Consulta
+    //Consulta de Back Order
     $Consulta_Monto_Back ="SELECT SUM( T1.[OpenQty] *  T1.[Price]  ) as Total FROM ORDR T0  INNER JOIN RDR1 T1 ON T0.DocEntry = T1.DocEntry INNER JOIN OSLP T2 ON T0.SlpCode = T2.SlpCode WHERE T0.[DocDate] >= ".$Fecha_Inicial." AND T0.[DocDate] <= ".$Fecha_Final." AND   T1.[OpenQty] <> 0 AND  T2.[U_CODIGO_USA]  = ".$Usuario_Actual."";
     $Resultado_Consulta4 = odbc_exec($Conexion_SQL, $Consulta_Monto_Back);
     $Monto_Total4 = odbc_result($Resultado_Consulta4, "Total");
     $back =  '$ ' . number_format($Monto_Total4, 2);
     odbc_close($Conexion_SQL); 
+
+//Fin de Sección de valores parte superior index   --------------------------------------------------------------------------------------------
 ?>

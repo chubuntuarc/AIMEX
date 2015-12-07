@@ -6,7 +6,7 @@
                       strokeColor : "rgba(220,220,220,0.8)",
                       highlightFill: "#757575",
                       highlightStroke: "rgba(220,220,220,1)",
-                      data : [100,90,80,70,60,50,40,30,20,10,0,0]
+                      data : [80000,90000,80000,70000,60000,50000,40000,30000,20000,10000,0,0]
                     }
                   ]
 
@@ -22,4 +22,6 @@
                     $('#Boton_Superior_Uno').on('click', function(){
                       $('#Titulo_Grafica').text("Facturas de Clientes");
                     })
+
+
                 });
