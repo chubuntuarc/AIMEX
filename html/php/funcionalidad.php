@@ -7,10 +7,6 @@ session_start(0);
 	$_SESSION["Fecha_Inicial"] = date('Y')."-01-01"; 		
 	//Fecha hasta la que se haran las consultas.
 	$_SESSION["Fecha_Final"] = date('Y')."-12-31"; 	
-	//Fechas divididas por mes
-	//Fecha hasta la que se haran las consultas.
-	$_SESSION["Enero_Inicial"] = date('Y')."-01-01"; 	
-	$_SESSION["Enero_Final"] = date('Y')."-01-31"; 
 
 //Fin de Variables globales del sistema.   -----------------------------------------------------------------------------------------------
 
@@ -52,12 +48,4 @@ session_start(0);
 
 //Fin de Sección de valores parte superior index   --------------------------------------------------------------------------------------------
 
-//Sección de consultas de datos de la gráfica de la página principal  --------------------------------------------------------------------------------------------
-    //Consulta de facturas de Clientes
-    //Enero
-	$Consulta_Monto_Factura_Enero_Inicial ="SELECT sum(T1.[TotalSumSy]) as Total FROM OINV T0  INNER JOIN INV1 T1 ON T0.DocEntry = T1.DocEntry INNER JOIN OSLP T2 ON T0.SlpCode = T2.SlpCode WHERE T2.[U_CODIGO_USA] = ".$_SESSION['Usuario_Actual']." AND  T0.[DocDate] >= '".$_SESSION["Enero_Inicial"]."' AND  T0.[DocDate] <= '".$_SESSION["Enero_Final"]."' AND  T1.[TargetType] <> 14";
-	$Resultado_Consulta_Enero_Inicial = odbc_exec($Conexion_SQL, $Consulta_Monto_Factura_Enero_Inicial);
-	$Monto_Enero = odbc_result($Resultado_Consulta_Enero_Inicial, "Total");
-	$Monto_Total_Enero = number_format($Monto_Enero, 0);
-	odbc_close($Conexion_SQL);
 ?>

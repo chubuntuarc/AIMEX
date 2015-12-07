@@ -260,18 +260,6 @@
           <form>
             <div id="tabla_ventas">
               <label><h5 id="Titulo_Grafica">Facturas de Clientes</h5></label>
-              <label class="invisibles" id="Monto_Enero"><?php echo $Monto_Total_Enero; ?></label>
-              <label class="invisibles">Febrero</label>
-              <label class="invisibles">Marzo</label>
-              <label class="invisibles">Abril</label>
-              <label class="invisibles">Mayo</label>
-              <label class="invisibles">Junio</label>
-              <label class="invisibles">Julio</label>
-              <label class="invisibles">Agosto</label>
-              <label class="invisibles">Septiembre</label>
-              <label class="invisibles">Octubre</label>
-              <label class="invisibles">Noviembre</label>
-              <label class="invisibles">Diciembre</label>
               <canvas id="canvas" height="450" width="1200"></canvas>
             </div>
           </form>

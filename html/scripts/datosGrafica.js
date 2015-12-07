@@ -1,5 +1,4 @@
  //Variables generales de la gráfica
-        
         var barChartData = {
           labels : ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"],
           datasets : [
@@ -8,7 +7,7 @@
               strokeColor : "rgba(220,220,220,0.8)",
               highlightFill: "#757575",
               highlightStroke: "rgba(220,220,220,1)",
-              data : [80000,20000.50,20000,20000,60000,50000,40000,30000,20000,10000,0,0]
+              data : [10000,20000.50,20000,20000,60000,50000,40000,30000,20000,10000,0,0]
 
             }
           ]
