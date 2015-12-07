@@ -458,10 +458,14 @@
 <script src="scripts/tabla_ventas.js"></script>
 <!--Script de control dinamico de gráfica index-->
 <script src="scripts/datosGrafica.js"></script>
+<script src="scripts/ui-load.js"></script>
 <script src="scripts/ui-jp.config.js"></script>
+<script src="scripts/ui-jp.js"></script>
 <script src="scripts/ui-nav.js"></script>
+<script src="scripts/ui-toggle.js"></script>
 <script src="scripts/ui-form.js"></script>
 <script src="scripts/ui-waves.js"></script>
+<script src="scripts/ui-client.js"></script>
 <!--/Sección de scripts - - - - - - - -  - - - - - - -  - - - - - - - - -  - - - - - - -->
 </body>
 </html>
