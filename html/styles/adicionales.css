@@ -13,7 +13,7 @@
 	margin-bottom: -40px;
 }
 
-#imagenes_superiores button
+#imagenes_superiores a
 {
 	position: relative;
 	top: 7px;
@@ -24,4 +24,9 @@
 	position: relative;
 	left: 20px;
 	font-size: 30px;
+}
+
+.invisibles
+{
+	display: none;
 }

@@ -186,9 +186,7 @@
     <div class="col-lg-3 col-md-6 col-sm-12">
       <div class="card" id="imagenes_superiores">
         <form>
-          <button  class="md-btn md-raised pull-left p-h-md green" id="Boton_Superior_Uno">
-            <img src="images/monto_facturacion.png">
-          </button>
+          <a class="md-btn md-raised pull-left p-h-md green" id="Boton_Superior_Uno"><img src="images/monto_facturacion.png"></a>
           <div id="titulos_superiores">
             <label><h4>Facturas de Clientes</h4></label>
           </div>
@@ -206,9 +204,7 @@
     <div class="col-lg-3 col-md-6 col-sm-12">
       <div class="card" id="imagenes_superiores">
         <form>
-          <button md-ink-ripple class="md-btn md-raised pull-left p-h-md indigo" id="Boton_Superior_Dos">
-            <img src="images/monto_facturacion.png">
-          </button>
+          <a md-ink-ripple class="md-btn md-raised pull-left p-h-md indigo" id="Boton_Superior_Dos"><img src="images/monto_facturacion.png"></a>
           <div id="titulos_superiores">
             <label><h4>Ordenes de Venta</h4></label>
           </div>
@@ -225,9 +221,7 @@
     <div class="col-lg-3 col-md-6 col-sm-12">
       <div class="card" id="imagenes_superiores">
         <form>
-          <button md-ink-ripple class="md-btn md-raised pull-left p-h-md cyan" id="Boton_Superior_Tres">
-            <img src="images/monto_facturacion.png">
-          </button>
+          <a md-ink-ripple class="md-btn md-raised pull-left p-h-md cyan" id="Boton_Superior_Tres"><img src="images/monto_facturacion.png"></a>
           <div id="titulos_superiores">
             <label><h4>Ofertas de Venta</h4></label>
           </div>
@@ -244,9 +238,7 @@
     <div class="col-lg-3 col-md-6 col-sm-12">
       <div class="card" id="imagenes_superiores">
         <form>
-          <button md-ink-ripple class="md-btn md-raised pull-left p-h-md purple" id="Boton_Superior_Cuatro">
-            <img src="images/monto_facturacion.png">
-          </button>
+          <a md-ink-ripple class="md-btn md-raised pull-left p-h-md purple" id="Boton_Superior_Cuatro"><img src="images/monto_facturacion.png"></a>
           <div id="titulos_superiores">
             <label><h4>Back Order</h4></label>
           </div>
@@ -268,6 +260,18 @@
           <form>
             <div id="tabla_ventas">
               <label><h5 id="Titulo_Grafica">Facturas de Clientes</h5></label>
+              <label class="invisibles" id="Monto_Enero"><?php echo $Monto_Total_Enero; ?></label>
+              <label class="invisibles">Febrero</label>
+              <label class="invisibles">Marzo</label>
+              <label class="invisibles">Abril</label>
+              <label class="invisibles">Mayo</label>
+              <label class="invisibles">Junio</label>
+              <label class="invisibles">Julio</label>
+              <label class="invisibles">Agosto</label>
+              <label class="invisibles">Septiembre</label>
+              <label class="invisibles">Octubre</label>
+              <label class="invisibles">Noviembre</label>
+              <label class="invisibles">Diciembre</label>
               <canvas id="canvas" height="450" width="1200"></canvas>
             </div>
           </form>
