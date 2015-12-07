@@ -10,7 +10,6 @@
   <link rel="stylesheet" href="../libs/assets/font-awesome/css/font-awesome.css" type="text/css" />
   <link rel="stylesheet" href="../libs/jquery/waves/dist/waves.css" type="text/css" />
   <link rel="stylesheet" href="styles/material-design-icons.css" type="text/css" />
-
   <link rel="stylesheet" href="../libs/jquery/bootstrap/dist/css/bootstrap.css" type="text/css" />
   <link rel="stylesheet" href="styles/font.css" type="text/css" />
   <link rel="stylesheet" href="styles/app.css" type="text/css" />
@@ -20,20 +19,21 @@
 <body>
 <div class="app">
 
-  <!-- Barra lateral -->
+<!--Sección superior de logo y nombre de la empresa - - - - - -  - - - - - - - - - -  - - - -  - - - - - - -->
   <aside id="aside" class="app-aside modal fade folded" role="menu">
     <div class="left">
       <div class="box bg-white">
         <div class="navbar md-whiteframe-z1 no-radius blue">
             <!-- Logo -->
             <a class="navbar-brand">
-              
               <img src="images/logo.png" alt="." style="max-height: 36px">
               <span class="hidden-folded m-l inline">AIMCO</span>
             </a>
             <!-- / Logo -->
         </div>
+<!--/Sección superior de logo y nombre de la empresa - - - - - -  - - - - - - - - - -  - - - -  - - - - -  -->
 
+<!--Sección barra lateral del sistema - - - - - - - - - - - - -  - - - - - - - - - -  - - - -  - - - - - - -->
         <div class="box-row">
           <div class="box-cell scrollable hover">
             <div class="box-inner">
@@ -106,7 +106,7 @@
         <nav>
           <ul class="nav b-t b">
             <li>
-              <a href="http://themeforest.net/item/materil-responsive-admin-dashboard-template/11062969" target="_blank" md-ink-ripple>
+              <a href="#" target="_blank" md-ink-ripple>
                 <i class="icon mdi-action-help i-20"></i>
                 <span>Ayuda &amp; Soporte</span>
               </a>
@@ -116,20 +116,20 @@
       </div>
     </div>
   </aside>
-  <!-- / Barra lateral -->
+<!--/Sección barra lateral del sistema - - - - - - - - - - - - -  - - - - - - - - - -  - - - -  - - - - - - -->
   
-  <!-- Contenido -->
+<!--Header del sistema - - - - - - - - - - - - - - - - - - - - -  - - - - - - - - - -  - - - -  - - - - - - -->
   <div id="content" class="app-content" role="main">
     <div class="box">
           <!-- Content Navbar -->
     <div class="navbar md-whiteframe-z1 no-radius blue">
-      <!-- Open side - Naviation on mobile -->
+      <!-- Apertura de la barra de navegacion /Versión movil -->
       <a md-ink-ripple  data-toggle="modal" data-target="#aside" class="navbar-item pull-left visible-xs visible-sm"><i class="mdi-navigation-menu i-24"></i></a>
       <!-- / -->
-      <!-- Page title - Bind to $state's title -->
+      <!-- Titulo de la página -->
       <div class="navbar-item pull-left h4">Dashboard</div>
-      <!-- / -->
-      <!-- Common tools -->
+      <!-- /Titulo de la página -->
+      <!-- Menu contextual superior derecho -->
       <ul class="nav nav-sm navbar-tool pull-right">
         <li>
           <a md-ink-ripple ui-toggle-class="show" target="#search">
@@ -155,8 +155,8 @@
         </li>
       </ul>
       <div class="pull-right" ui-view="navbar@"></div>
-      <!-- / -->
-      <!-- Search form -->
+      <!-- /Menu contextual superior derecho -->
+      <!-- Busqueda del sistema -->
       <div id="search" class="pos-abt w-full h-full blue hide">
         <div class="box">
           <div class="box-col w-56 text-center">
@@ -172,14 +172,13 @@
           </div>
         </div>
       </div>
-      <!-- / -->
+      <!-- /Busqueda del sistema -->
     </div>
-    <!-- Content -->
-
       <div class="box-row">
         <div class="box-cell">
           <div class="box-inner padding">
             <div class="row">
+<!--/Header del sistema  - - - - - - - - - - - - - - - - - - - -  - - - - - - - - - -  - - - -  - - - - - - -->
 
 <!--   Sección superior de vista de dinero - - - - - - - - - - - - - - - - - - - - - - - - - --> 
 
@@ -278,8 +277,7 @@
 
 <!--  /Sección de charts  - - - - - - - -  - - - - - - - - - - - - - - - - - - - - - - - - - --> 
 
-  <!-- / content -->
-
+<!--  Sección de chat de la empresa  - - - - - - - -  - - - - - - - - - - - - - - - - - - - - - - - - - --> 
   <div class="modal fade" id="user" data-backdrop="false">
     <div class="right w-xl bg-white md-whiteframe-z2">
         <div class="box">
@@ -381,10 +379,8 @@
       <a href class="text-muted m-h"><i class="fa fa-fw fa-facebook"></i> Facebook</a>
     </div>
   </div>
-
     </div>
   </div>
-
   <div class="modal fade" id="chat" data-backdrop="false">
     <div class="right w-xxl bg-white md-whiteframe-z2">
         <div class="box">
@@ -448,12 +444,11 @@
       </form>
     </div>
   </div>
-
     </div>
   </div>
-
-
 </div>
+<!--  /Sección de chat de la empresa  - - - - - - - -  - - - - - - - - - - - - - - - - - - - - - - - - - --> 
+
 <!--Sección de scripts - - - - - - - -  - - - - - - -  - - - - - - - - -  - - - - - - -->
 <!--Librerias de JQuery-->
 <script src="../libs/jquery/jquery/dist/jquery.js"></script>
