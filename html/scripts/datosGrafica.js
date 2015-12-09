@@ -4,6 +4,11 @@
         var Valores_Facturacion = document.getElementById("campos_facturacion").innerHTML=Campos_Facturacion;
         var Mes_Facturacion = Valores_Facturacion.split(",");
 
+        //Campos para la gráfica de Facturación
+        var Campos_Ordenes = document.getElementById("campos_ordenes").value;
+        var Valores_Ordenes = document.getElementById("campos_facturacion").innerHTML=Campos_Ordenes;
+        var Mes_Ordenes = Valores_Ordenes.split(",");
+
         var barChartData = {
           labels : ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"],
           datasets : [
@@ -45,7 +50,7 @@
                 $('#Boton_Superior_Dos').on('click', function(){
                     $('#Titulo_Grafica').text("Ordenes de Venta");
                     window.myBar.destroy();
-                    barChartData.datasets[0].data = [0,0,10000,20000,30000,40000,50000,60000,70000,80000,90000,100000];
+                    barChartData.datasets[0].data = [parseFloat(Mes_Ordenes[0]),parseFloat(Mes_Ordenes[1]),parseFloat(Mes_Ordenes[2]),parseFloat(Mes_Ordenes[3]),parseFloat(Mes_Ordenes[4]),parseFloat(Mes_Ordenes[5]),parseFloat(Mes_Ordenes[6]),parseFloat(Mes_Ordenes[7]),parseFloat(Mes_Ordenes[8]),parseFloat(Mes_Ordenes[9]),parseFloat(Mes_Ordenes[10]),parseFloat(Mes_Ordenes[11])];
                     barChartData.datasets[0].fillColor = '#3F51B5';
                     var ctx = document.getElementById("canvas").getContext("2d");
                     window.myBar = new Chart(ctx).Bar(barChartData, {
