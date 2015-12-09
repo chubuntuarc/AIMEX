@@ -1,4 +1,9 @@
  //Variables generales de la gráfica
+        //Campos para la gráfica de Facturación
+        var Campos_Facturacion = document.getElementById("campos_facturacion").value;
+        var Valores_Facturacion = document.getElementById("campos_facturacion").innerHTML=Campos_Facturacion;
+        var Mes_Facturacion = Valores_Facturacion.split(",");
+
         var barChartData = {
           labels : ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"],
           datasets : [
@@ -7,12 +12,11 @@
               strokeColor : "rgba(220,220,220,0.8)",
               highlightFill: "#757575",
               highlightStroke: "rgba(220,220,220,1)",
-              data : [10000,20000.50,20000,20000,60000,50000,40000,30000,20000,10000,0,0]
+              data : [parseFloat(Mes_Facturacion[0]),parseFloat(Mes_Facturacion[1]),parseFloat(Mes_Facturacion[2]),parseFloat(Mes_Facturacion[3]),parseFloat(Mes_Facturacion[4]),parseFloat(Mes_Facturacion[5]),parseFloat(Mes_Facturacion[6]),parseFloat(Mes_Facturacion[7]),parseFloat(Mes_Facturacion[8]),parseFloat(Mes_Facturacion[9]),parseFloat(Mes_Facturacion[10]),parseFloat(Mes_Facturacion[11])]
 
             }
           ]
         }
-
 //Función que carga la grafica inicial
             
         $(function(){
@@ -28,7 +32,7 @@
                 $('#Boton_Superior_Uno').on('click', function() {
                     $('#Titulo_Grafica').text("Facturas de Clientes");
                       window.myBar.destroy();
-                      barChartData.datasets[0].data = [80000,90000,80000,70000,60000,50000,40000,30000,20000,10000,0,0];
+                      barChartData.datasets[0].data = [parseFloat(Mes_Facturacion[0]),parseFloat(Mes_Facturacion[1]),parseFloat(Mes_Facturacion[2]),parseFloat(Mes_Facturacion[3]),parseFloat(Mes_Facturacion[4]),parseFloat(Mes_Facturacion[5]),parseFloat(Mes_Facturacion[6]),parseFloat(Mes_Facturacion[7]),parseFloat(Mes_Facturacion[8]),parseFloat(Mes_Facturacion[9]),parseFloat(Mes_Facturacion[10]),parseFloat(Mes_Facturacion[11])];
                       barChartData.datasets[0].fillColor = '#4CAF50';
                     var ctx = document.getElementById("canvas").getContext("2d");
                         window.myBar = new Chart(ctx).Bar(barChartData, {

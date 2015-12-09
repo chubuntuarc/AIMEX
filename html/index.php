@@ -261,6 +261,19 @@
             <div id="tabla_ventas">
               <label><h5 id="Titulo_Grafica">Facturas de Clientes</h5></label>
               <canvas id="canvas" height="450" width="1200"></canvas>
+              <input type="text" id="campos_facturacion" value="
+                <?php
+                //Consultas para información de la gráfica en index   --------------------------------------------------------------------------------------------
+                    //Consulta de Facturas de Clientes
+                    $Consulta_Grafica_Facturas ="SELECT sum(T1.[TotalSumSy])AS Total FROM OINV T0  INNER JOIN INV1 T1 ON T0.DocEntry = T1.DocEntry INNER JOIN OSLP T2 ON T0.SlpCode = T2.SlpCode WHERE T0.[DocDate] >= '2015' AND  T2.[U_CODIGO_USA]  = 5113 AND T1.[TargetType] <> 14 GROUP BY month(T0.[DocDate]) ORDER BY month(T0.[DocDate])";
+                    $Resultado_Consulta_Grafica = odbc_exec($Conexion_SQL, $Consulta_Grafica_Facturas);
+                    while ($exe = odbc_fetch_array($Resultado_Consulta_Grafica)) {
+                      foreach ($exe as $meses) {
+                        echo $meses.",";
+                      }
+                    }
+                ?>
+              ">
             </div>
           </form>
         </div>

@@ -48,15 +48,6 @@ session_start(0);
 
 //Fin de Sección de valores parte superior index   --------------------------------------------------------------------------------------------
 
-//Consultas para información de la gráfica en index   --------------------------------------------------------------------------------------------
-    //Consulta de Facturas de Clientes
-    $Consulta_Grafica_Facturas ="SELECT sum(T1.[TotalSumSy]) as Total FROM OINV T0  INNER JOIN INV1 T1 ON T0.DocEntry = T1.DocEntry INNER JOIN OSLP T2 ON T0.SlpCode = T2.SlpCode WHERE T2.[U_CODIGO_USA] = 5113 AND T0.[DocDate] >= '2015' AND T1.[TargetType] <> 14 GROUP BY  DATENAME(mm, T0.[DocDate]), DATENAME(yy, T0.[DocDate])";
-    $Resultado_Consulta_Grafica = odbc_exec($Conexion_SQL, $Consulta_Grafica_Facturas);
-    	echo "[";
-    while ($exe = odbc_fetch_array($Resultado_Consulta_Grafica)) {
-			foreach ($exe as $meses) {
-				echo $meses.",";
-			}
-    }
-    echo "]";  
+
+	
 ?>
