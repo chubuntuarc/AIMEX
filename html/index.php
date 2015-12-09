@@ -146,11 +146,11 @@
             <i class="mdi-navigation-more-vert i-24"></i>
           </a>
           <ul class="dropdown-menu dropdown-menu-scale pull-right pull-up text-color">
-            <li><a href>Single-column view</a></li>
-            <li><a href>Sort by date</a></li>
-            <li><a href>Sort by name</a></li>
+            <li><a href>Opción1</a></li>
+            <li><a href>Opción2</a></li>
+            <li><a href>Opción3</a></li>
             <li class="divider"></li>
-            <li><a href>Help &amp; feedback</a></li>
+            <li><a href>Ayuda &amp; Soporte</a></li>
           </ul>
         </li>
       </ul>
@@ -259,10 +259,11 @@
         <div class="card" id="imagenes_superiores">
           <form>
             <div id="tabla_ventas">
-              <label><h5 id="Titulo_Grafica">Facturas de Clientes</h5></label>
+              <label><h5 id="Titulo_Grafica">Facturas de Clientes</h5></label> <!--El titulo se modifica en base al script-->
               <canvas id="canvas" height="450" width="1200"></canvas>
               <!--Inputs ocultos para la consulta de los valores de las graficas-->
-              <input type="text" id="campos_facturacion" value="
+              <!--El id usado en los input sirve para llevar la cadena al script JS y esconderlos usando styles/adicionales.css-->
+              <input type="text" id="campos_facturacion" value=" 
                 <?php
                 //Consultas para información de la gráfica en index   --------------------------------------------------------------------------------------------
                     //Consulta de Facturas de Clientes
@@ -270,24 +271,36 @@
                     $Resultado_Consulta_Grafica = odbc_exec($Conexion_SQL, $Consulta_Grafica_Facturas);
                     while ($fac = odbc_fetch_array($Resultado_Consulta_Grafica)) {
                       foreach ($fac as $meses) {
-                        echo $meses.",";
+                        echo $meses.",";  //Se crea usando el foreach una cadena, la cual se divide en scripts/datosGrafica.js para llenar los campos de la gráfica
                       }
                     }
                 ?>
               ">
               <input type="text" id="campos_ordenes" value="
                 <?php
-                //Consultas para información de la gráfica en index   --------------------------------------------------------------------------------------------
-                    //Consulta de Facturas de Clientes
+                    //Consulta de Ordenes de Venta
                     $Consulta_Grafica_Ordenes ="SELECT sum(T1.[TotalSumSy])AS Total FROM ORDR T0  INNER JOIN RDR1 T1 ON T0.DocEntry = T1.DocEntry INNER JOIN OSLP T2 ON T0.SlpCode = T2.SlpCode WHERE T0.[DocDate] >= '".date('Y')."' AND T0.[CANCELED] = 'N' AND   T2.[U_CODIGO_USA]  = ".$_SESSION['Usuario_Actual']." GROUP BY month(T0.[DocDate]) ORDER BY month(T0.[DocDate])";
                     $Resultado_Consulta_Grafica_Ordenes = odbc_exec($Conexion_SQL, $Consulta_Grafica_Ordenes);
                     while ($ord = odbc_fetch_array($Resultado_Consulta_Grafica_Ordenes)) {
-                      foreach ($ord as $meses_ord) {
+                      foreach ($ord as $meses_ord) {  //Las variables en while y foreach de los input son solo para uso en ellos mismos.
                         echo $meses_ord.",";
                       }
                     }
                 ?>
               ">
+              <input type="text" id="campos_ofertas" value="
+                <?php
+                    //Consulta de Ofertas de Venta
+                    $Consulta_Grafica_Ofertas ="SELECT sum(T1.[TotalSumSy])AS Total FROM OQUT T0  INNER JOIN QUT1 T1 ON T0.DocEntry = T1.DocEntry INNER JOIN OSLP T2 ON T0.SlpCode = T2.SlpCode WHERE T0.[DocDate] >= '".date('Y')."' AND T2.[U_CODIGO_USA]  = ".$_SESSION['Usuario_Actual']." GROUP BY month(T0.[DocDate]) ORDER BY month(T0.[DocDate])";
+                    $Resultado_Consulta_Grafica_Ofertas = odbc_exec($Conexion_SQL, $Consulta_Grafica_Ofertas);
+                    while ($ofe = odbc_fetch_array($Resultado_Consulta_Grafica_Ofertas)) {
+                      foreach ($ofe as $meses_ofe) {
+                        echo $meses_ofe.",";
+                      }
+                    }
+                ?>
+              ">
+              <!--/Inputs ocultos para la consulta de los valores de las graficas-->
             </div>
           </form>
         </div>
