@@ -321,6 +321,70 @@
 
 <!--  /Sección de charts  - - - - - - - -  - - - - - - - - - - - - - - - - - - - - - - - - - --> 
 
+<!--  Sección de Rankings - - - - - - - - - -  - - - - - - - - - - -  - - - - - - - - - - - - -->
+      <!-- Top 10 Ventas-->
+      <div class="col-lg-6 col-md-12 col-sm-12">
+            <div class="panel panel-default">
+              <div class="panel-heading"><h4>Top 10 - Producto más vendido por cliente</h4></div>
+              <table class="table table-striped " >
+                <thead id="Top_Ventas_Header">
+                  <tr>
+                    <th>Producto</th>    
+                    <th>Cliente</th>                 
+                    <th>Cantidad</th>    
+                    <th>Precio</th>
+                    <th>Importe</th>
+                  </tr>
+                </thead>
+                <tbody id="Top_Ventas">
+                  <?php 
+                  //Sección de Ranking de Ventas y Clientes   --------------------------------------------------------------------------------------------
+                      //Consulta de Ventas
+                      $Consulta_Top_Ventas ="SELECT top 10 T1.[ItemCode] as Producto, T0.[CardName],  sum(T1.[Quantity]) as Cantidad,T1.[Price],  sum(T1.[Quantity])* T1.[Price] as Total FROM OINV T0  INNER JOIN INV1 T1 ON T0.DocEntry = T1.DocEntry INNER JOIN OSLP T2 ON T0.SlpCode = T2.SlpCode WHERE T0.[DocDate] >= '".$_SESSION["Anual"]."' AND  T2.[U_CODIGO_USA] = ".$_SESSION["Usuario_Actual"]." AND  T1.[TargetType] <> 14 GROUP BY T1.[ItemCode],T1.[Price],T0.[CardName] ORDER BY Cantidad desc";
+                      $Resultado_Consulta_Top_Ventas = odbc_exec($Conexion_SQL, $Consulta_Top_Ventas);
+                      while (odbc_fetch_array($Resultado_Consulta_Top_Ventas)) {
+                        echo "<tr>";
+                        echo "<td>".odbc_result($Resultado_Consulta_Top_Ventas, 1)."</td>";
+                        echo "<td id='Top_Venta_Cliente'>".odbc_result($Resultado_Consulta_Top_Ventas, 2)."</td>";
+                        echo "<td>".number_format(odbc_result($Resultado_Consulta_Top_Ventas, 3))."</td>";
+                        echo "<td>$ ".number_format(odbc_result($Resultado_Consulta_Top_Ventas, 4), 2)."</td>";
+                        echo "<td>$ ".number_format(odbc_result($Resultado_Consulta_Top_Ventas, 5), 2)."</td>";
+                        echo "</tr>";
+                        }
+                   ?>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        <!-- Top 10 Ventas-->
+        <!-- Top 10 Clientes-->
+      <div class="col-lg-4 col-md- col-sm-12">
+            <div class="panel panel-default">
+              <div class="panel-heading"><h4>Top 10 Clientes</h4></div>
+              <table class="table table-striped " >
+                <thead>
+                  <tr>
+                    <th class="text-center">#</th>
+                    <th>Nombre</th>    
+                    <th>Empresa</th>                 
+                    <th>Otro</th>    
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>  
+                  <td class="text-center">1</td>
+                    <td>Nombre 1</td>
+                    <td>Empresa 1</td>
+                    <td>Otro 1</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!-- Top 10 Ventas-->
+<!--  /Sección de Rankings - - - - - - - - - -  - - - - - - - - - - -  - - - - - - - - - - - - -->
+
 <!--  Sección de chat de la empresa  - - - - - - - -  - - - - - - - - - - - - - - - - - - - - - - - - - --> 
   <div class="modal fade" id="user" data-backdrop="false">
     <div class="right w-xl bg-white md-whiteframe-z2">
@@ -502,6 +566,8 @@
 <script src="scripts/tabla_ventas.js"></script>
 <!--Script de control dinamico de gráfica index-->
 <script src="scripts/datosGrafica.js"></script>
+<!--Script que crea los tooltip de la gráfica-->
+<script src="scripts/tooltip.js"></script>
 <script src="scripts/ui-load.js"></script>
 <script src="scripts/ui-jp.config.js"></script>
 <script src="scripts/ui-jp.js"></script>

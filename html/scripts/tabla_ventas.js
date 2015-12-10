@@ -129,7 +129,7 @@
       tooltipFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
 
       // Number - Tooltip label font size in pixels
-      tooltipFontSize: 14,
+      tooltipFontSize: 12,
 
       // String - Tooltip font weight style
       tooltipFontStyle: "normal",
@@ -141,7 +141,7 @@
       tooltipTitleFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
 
       // Number - Tooltip title font size in pixels
-      tooltipTitleFontSize: 14,
+      tooltipTitleFontSize: 12,
 
       // String - Tooltip title font weight style
       tooltipTitleFontStyle: "bold",
@@ -911,7 +911,7 @@
       if (typeof this.activeElements === 'undefined') this.activeElements = [];
 
       var isChanged = (function(Elements){
-        var changed = false;
+        var changed = true;               //Este lo cambie a true
 
         if (Elements.length !== this.activeElements.length){
           changed = true;
@@ -934,7 +934,7 @@
       }
       this.draw();
       if(this.options.customTooltips){
-        this.options.customTooltips(false);
+        this.options.customTooltips(true);  //Este lo cambie a true
       }
       if (ChartElements.length > 0){
         // If we have multiple datasets, show a MultiTooltip for all of the data points at that index
@@ -2098,13 +2098,13 @@
       //Set up tooltip events on the chart
       if (this.options.showTooltips){
         helpers.bindEvents(this, this.options.tooltipEvents, function(evt){
-          var activeBars = (evt.type !== 'mouseout') ? this.getBarsAtEvent(evt) : [];
+          var activeBars = (evt.type !== 'mouseout') ? this.getBarsAtEvent(evt) : [];  //Valor original era mouseout
 
           this.eachBars(function(bar){
-            bar.restore(['fillColor', 'strokeColor']);
+            bar.restore(['fillColor', 'strokeColor']);   //Esta función devuelve el color original a la barra
           });
           helpers.each(activeBars, function(activeBar){
-            activeBar.fillColor = activeBar.highlightFill;
+            activeBar.fillColor = activeBar.highlightFill;            //Esta función sirve para indicar cual barra esta activa
             activeBar.strokeColor = activeBar.highlightStroke;
           });
           this.showTooltip(activeBars);

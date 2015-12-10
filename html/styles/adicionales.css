@@ -22,11 +22,34 @@
 #tabla_ventas h5
 {
 	position: relative;
-	left: 20px;
+	left: 10px;
 	font-size: 30px;
 }
 
 #campos_facturacion, #campos_ordenes, #campos_ofertas, #campos_back_order
 {
 	display: none;
+}
+
+#Top_Ventas tr
+{
+	font-size: 10px;
+	text-align: left;
+	border-spacing: 0;
+}
+
+
+
+#Top_Ventas_Header th
+{
+	font-size: 12px;
+	text-align: left;
+	border-spacing: 0;
+
+}
+
+#Top_Venta_Cliente
+{
+	font-size: 8px;
+	text-align: left;
 }
