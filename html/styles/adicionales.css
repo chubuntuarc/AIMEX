@@ -31,25 +31,15 @@
 	display: none;
 }
 
-#Top_Ventas tr
+@media only screen and (max-width: 479px)
 {
-	font-size: 10px;
-	text-align: left;
-	border-spacing: 0;
+	#Top_Venta_Cliente, #Header_Cliente, #Precio_Top_Venta_Cliente, #Header_Precio
+	{
+			display:none!important;
+	}
 }
 
-
-
-#Top_Ventas_Header th
+#Producto_Top
 {
 	font-size: 12px;
-	text-align: left;
-	border-spacing: 0;
-
-}
-
-#Top_Venta_Cliente
-{
-	font-size: 8px;
-	text-align: left;
 }

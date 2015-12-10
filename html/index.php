@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="styles/font.css" type="text/css" />
   <link rel="stylesheet" href="styles/app.css" type="text/css" />
   <link rel="stylesheet" type="text/css" href="styles/adicionales.css">
-
+  <link rel="stylesheet" type="text/css" href="styles/tabla.css">
 </head>
 <body>
 <div class="app">
@@ -327,16 +327,15 @@
             <div class="panel panel-default">
               <div class="panel-heading"><h4>Top 10 - Producto más vendido por cliente</h4></div>
               <table class="table table-striped " >
-                <thead id="Top_Ventas_Header">
+                <thead>
                   <tr>
-                    <th>Producto</th>    
-                    <th>Cliente</th>                 
-                    <th>Cantidad</th>    
-                    <th>Precio</th>
-                    <th>Importe</th>
+                    <th class="text-left" id="Header_Cliente">Cliente</th> 
+                    <th class="text-left">Producto</th>    
+                    <th class="text-left">Cantidad</th>    
+                    <th class="text-left" id="Header_Precio">Precio</th>
                   </tr>
                 </thead>
-                <tbody id="Top_Ventas">
+                <tbody class="table-hover">
                   <?php 
                   //Sección de Ranking de Ventas y Clientes   --------------------------------------------------------------------------------------------
                       //Consulta de Ventas
@@ -344,11 +343,10 @@
                       $Resultado_Consulta_Top_Ventas = odbc_exec($Conexion_SQL, $Consulta_Top_Ventas);
                       while (odbc_fetch_array($Resultado_Consulta_Top_Ventas)) {
                         echo "<tr>";
-                        echo "<td>".odbc_result($Resultado_Consulta_Top_Ventas, 1)."</td>";
-                        echo "<td id='Top_Venta_Cliente'>".odbc_result($Resultado_Consulta_Top_Ventas, 2)."</td>";
-                        echo "<td>".number_format(odbc_result($Resultado_Consulta_Top_Ventas, 3))."</td>";
-                        echo "<td>$ ".number_format(odbc_result($Resultado_Consulta_Top_Ventas, 4), 2)."</td>";
-                        echo "<td>$ ".number_format(odbc_result($Resultado_Consulta_Top_Ventas, 5), 2)."</td>";
+                        echo "<td class='text-left' id='Top_Venta_Cliente'>".odbc_result($Resultado_Consulta_Top_Ventas, 2)."</td>";
+                        echo "<td class='text-left' id='Producto_Top'>".odbc_result($Resultado_Consulta_Top_Ventas, 1)."</td>";
+                        echo "<td class='text-left' >".number_format(odbc_result($Resultado_Consulta_Top_Ventas, 3))."</td>";
+                        echo "<td class='text-left' id='Precio_Top_Venta_Cliente'>$".number_format(odbc_result($Resultado_Consulta_Top_Ventas, 4), 2)."</td>";
                         echo "</tr>";
                         }
                    ?>
@@ -358,7 +356,7 @@
           </div>
         <!-- Top 10 Ventas-->
         <!-- Top 10 Clientes-->
-      <div class="col-lg-4 col-md- col-sm-12">
+      <div class="col-lg-6 col-md- col-sm-12">
             <div class="panel panel-default">
               <div class="panel-heading"><h4>Top 10 Clientes</h4></div>
               <table class="table table-striped " >
