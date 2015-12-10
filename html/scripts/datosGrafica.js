@@ -18,6 +18,11 @@
         var Valores_Ofertas = document.getElementById("campos_ofertas").innerHTML=Campos_Ofertas;
         var Mes_Ofertas = Valores_Ofertas.split(",");   //Se divide la cadena en partes para poder pasarlos a Float
 
+        //Campos para la gráfica de Back Order
+        var Campos_Back_Order = document.getElementById("campos_back_order").value;   //Cadena capturada de los input ocultos en el DOM
+        var Valores_Back_Order = document.getElementById("campos_back_order").innerHTML=Campos_Back_Order;
+        var Mes_Back_Order = Valores_Back_Order.split(",");   //Se divide la cadena en partes para poder pasarlos a Float
+
         var barChartData = {
           labels : ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"],
           datasets : [
@@ -84,7 +89,7 @@
                 $('#Boton_Superior_Cuatro').on('click', function(){
                     $('#Titulo_Grafica').text("Back Order");
                     window.myBar.destroy();
-                    barChartData.datasets[0].data = [0,0,10000,20000,30000,40000,50000,60000,70000,80000,90000,100000];
+                    barChartData.datasets[0].data = [parseFloat(Mes_Back_Order[0]),parseFloat(Mes_Back_Order[1]),parseFloat(Mes_Back_Order[2]),parseFloat(Mes_Back_Order[3]),parseFloat(Mes_Back_Order[4]),parseFloat(Mes_Back_Order[5]),parseFloat(Mes_Back_Order[6]),parseFloat(Mes_Back_Order[7]),parseFloat(Mes_Back_Order[8]),parseFloat(Mes_Back_Order[9]),parseFloat(Mes_Back_Order[10]),parseFloat(Mes_Back_Order[11])];
                     barChartData.datasets[0].fillColor = '#9C27B0';
                     var ctx = document.getElementById("canvas").getContext("2d");
                     window.myBar = new Chart(ctx).Bar(barChartData, {

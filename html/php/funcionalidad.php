@@ -3,10 +3,12 @@ session_start(0);
 //Variables globales del sistema.   -----------------------------------------------------------------------------------------------
 	//ID del usuario actual.
 	$_SESSION['Usuario_Actual'] = 5113; 
+	//Año actual.... Esta por defecto el del equipo, pero se busca modificarlo después
+	$_SESSION["Anual"] = date('Y');
 	//Fecha desde la que se haran las consultas.
-	$_SESSION["Fecha_Inicial"] = date('Y')."-01-01"; 		
+	$_SESSION["Fecha_Inicial"] = $_SESSION["Anual"]."-01-01"; 		
 	//Fecha hasta la que se haran las consultas.
-	$_SESSION["Fecha_Final"] = date('Y')."-12-31"; 	
+	$_SESSION["Fecha_Final"] = $_SESSION["Anual"]."-12-31"; 	
 
 //Fin de Variables globales del sistema.   -----------------------------------------------------------------------------------------------
 
