@@ -1262,7 +1262,7 @@ a.list-group-item.hover {
 .navbar .navbar-tool > li > a,
 .navbar .navbar-item,
 .navbar .navbar-brand {
-  padding: 0 16px;
+  padding: 0 1px;
   line-height: 64px;
 }
 
@@ -1995,7 +1995,7 @@ a.list-group-item.hover {
 }
 
 .purple {
-  background-color: #9c27b0;
+  background-color: #7E57C2;
 }
 
 .purple-50 {
@@ -2175,19 +2175,19 @@ a.list-group-item.hover {
 }
 
 .blue {
-  background-color: #B71C1C;
+  background-color: #00796B;
 }
 
 .blue-50 {
-  background-color: #e3f2fd;
+  background-color: #DB4437;
 }
 
 .blue-100 {
-  background-color: #bbdefb;
+  background-color: #DB4437;
 }
 
 .blue-200 {
-  background-color: #90caf9;
+  background-color: #DB4437;
 }
 
 .blue-300 {
@@ -2415,7 +2415,7 @@ a.list-group-item.hover {
 }
 
 .green {
-  background-color: #4caf50;
+  background-color: #4CAF50;
 }
 
 .green-50 {

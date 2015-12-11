@@ -26,7 +26,7 @@
       <div class="box bg-white">
         <div class="navbar md-whiteframe-z1 no-radius blue">
             <!-- Logo -->
-            <a class="navbar-brand">
+            <a href="index.php" class="navbar-brand">
               <img src="images/logo.png" alt="." style="max-height: 36px">
               <span class="hidden-folded m-l inline">AIMCO</span>
             </a>
@@ -38,12 +38,10 @@
         <div class="box-row">
           <div class="box-cell scrollable hover">
             <div class="box-inner">
-              <div class="p hidden-folded blue-50" style="background-image:url(images/bg.png); background-size:cover">
-                <div class="rounded w-64 bg-white inline pos-rlt">
-                  <img src="images/a0.png" class="img-responsive rounded">
-                </div>
-                <a class="block m-t-sm" ui-toggle-class="hide, show" target="#nav, #account">
-                  <span class="block font-bold">Antonio Diaz Reyes</span>
+              <div class="p hidden-folded blue-50" style="background-color: #424242; background-size:cover">
+                
+                <a id="Nombre_Usuario" class="block m-t-sm" ui-toggle-class="hide, show" target="#nav, #account">
+                  <span class="block font-bold" >Antonio Diaz Reyes</span>
                   <span class="pull-right auto">
                     <i class="fa inline fa-caret-down"></i>
                     <i class="fa none fa-caret-up"></i>
@@ -256,7 +254,7 @@
 
 <!--   Sección de charts  - - - - - - - -  - - - - - - - - - - - - - - - - - - - - - - - - - --> 
      <!-- Gráfica de ventas-->
-      <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class="col-lg-9 col-md-12 col-sm-12">
         <div class="card" id="imagenes_superiores">
           <form>
             <div id="tabla_ventas">
@@ -322,6 +320,58 @@
 
 <!--  /Sección de charts  - - - - - - - -  - - - - - - - - - - - - - - - - - - - - - - - - - --> 
 
+<div class="col-lg-3 col-md-6 col-sm-6">
+      <div class="md-list md-whiteframe-z0 bg-white m-b">
+        <div class="md-list-item">
+          <div class="md-list-item-left circle green">
+            <i class="mdi-action-grade i-24"></i>
+          </div>
+          <div class="md-list-item-content">
+            <h3 class="text-md">Notificación 1</h3>
+            <small class="font-thin">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui autem ratione vitae adipisci.</small>
+          </div>
+        </div>
+        <div class="md-list-item">
+          <div class="md-list-item-left circle indigo">
+            <i class="mdi-action-grade i-24"></i>
+          </div>
+          <div class="md-list-item-content">
+            <h3 class="text-md">Notificación 2</h3>
+            <small class="font-thin">Lorem ipsum dolor sit amet.</small>
+          </div>
+        </div>
+        <div class="md-list-item">
+          <div class="md-list-item-left circle pink">
+            <i class="mdi-action-grade i-24"></i>
+          </div>
+          <div class="md-list-item-content">
+            <h3 class="text-md">Notificación 3</h3>
+            <small class="font-thin">Lorem ipsum dolor sit amet.</small>
+          </div>
+        </div>
+        <div class="md-list-item">
+          <div class="md-list-item-left circle teal">
+            <i class="mdi-action-grade i-24"></i>
+          </div>
+          <div class="md-list-item-content">
+            <h3 class="text-md">Notificación 4</h3>
+            <small class="font-thin">Lorem ipsum dolor sit amet.</small>
+          </div>
+        </div>
+        <div class="md-list-item">
+          <div class="md-list-item-left circle teal">
+            <i class="mdi-action-grade i-24"></i>
+          </div>
+          <div class="md-list-item-content">
+            <h3 class="text-md">Notificación 5</h3>
+            <small class="font-thin">Lorem ipsum dolor sit amet.</small>
+          </div>
+        </div>
+      </div>
+     </div>
+
+
+
 <!--  Sección de Rankings - - - - - - - - - -  - - - - - - - - - - -  - - - - - - - - - - - - -->
       <!-- Top 10 Ventas-->
       <div class="col-lg-6 col-md-12 col-sm-12">
@@ -361,7 +411,7 @@
             <div class="panel panel-default">
               <div class="panel-heading"><h4>Top 10 Clientes</h4></div>
               <table class="table table-striped " >
-                <thead>
+                <thead id="Top_Clientes">
                   <tr>
                     <th>Cliente</th>    
                     <th>Importe</th>                 

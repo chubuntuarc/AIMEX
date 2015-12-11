@@ -13,9 +13,13 @@
   animation: float 5s infinite;
 }
  
+#Top_Clientes th {
+  background:#78909C;
+}
+
 th {
   color:#FFFFFF;;
-  background:#3E94EC;
+  background:#FF8A65;
   border-bottom:4px solid #9ea7af;
   border-right: 1px solid #343a45;
   font-weight: 100;
