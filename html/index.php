@@ -363,19 +363,22 @@
               <table class="table table-striped " >
                 <thead>
                   <tr>
-                    <th class="text-center">#</th>
-                    <th>Nombre</th>    
-                    <th>Empresa</th>                 
-                    <th>Otro</th>    
+                    <th>Cliente</th>    
+                    <th>Importe</th>                 
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>  
-                  <td class="text-center">1</td>
-                    <td>Nombre 1</td>
-                    <td>Empresa 1</td>
-                    <td>Otro 1</td>
-                  </tr>
+                   <?php 
+                      //Consulta de Clientes
+                      $Consulta_Top_Clientes ="SELECT TOP 10 T0.[CardName], SUM ( T1.[TotalSumSy] ) AS Total FROM OINV T0  INNER JOIN INV1 T1 ON T0.DocEntry = T1.DocEntry INNER JOIN OSLP T2 ON T0.SlpCode = T2.SlpCode WHERE T1.[TargetType] <> 14 AND  T0.[DocDate] >='2015' AND T2.[U_CODIGO_USA] = 5113  GROUP BY T0.[CardName] ORDER BY Total DESC";
+                      $Resultado_Consulta_Top_Clientes = odbc_exec($Conexion_SQL, $Consulta_Top_Clientes);
+                      while (odbc_fetch_array($Resultado_Consulta_Top_Clientes)) {
+                        echo "<tr>";
+                        echo "<td class='text-left'>".odbc_result($Resultado_Consulta_Top_Clientes, 1)."</td>";
+                        echo "<td class='text-left'>$".number_format(odbc_result($Resultado_Consulta_Top_Clientes, 2))."</td>";
+                        echo "</tr>";
+                        }
+                   ?>
                 </tbody>
               </table>
             </div>
