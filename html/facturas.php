@@ -229,7 +229,7 @@
               $Resultado_Notificacion_Factura = odbc_exec($Conexion_SQL, $Consulta_Notificacion_Facturas);
               $Notificaciones_Facturacion = odbc_result($Resultado_Notificacion_Factura, "Total");
               $Registros_Facturacion = $Notificaciones_Facturacion;
-              if ($Registros_Facturacion > 0) {  echo $Registros_Facturacion . " Registros Nuevos"; }
+              if ($Registros_Facturacion > 1) {  echo $Registros_Facturacion . " Registros Nuevos"; }
               elseif ($Registros_Facturacion == 1) {  echo $Registros_Facturacion . " Registro Nuevo"; }
               else { echo "Sin nuevos registros"; }
               odbc_close($Conexion_SQL);  ?></small>
@@ -243,12 +243,12 @@
             <h3 class="text-md">Ordenes</h3>
             <small class="font-thin"><?php 
             //Consulta de nuevas ordenes al día
-              $Consulta_Notificacion_Ordenes ="SELECT count(T0.[DocNum]) as Total FROM ORDR T0  INNER JOIN RDR1 T1 ON T0.DocEntry = T1.DocEntry INNER JOIN OSLP T2 ON T0.SlpCode = T2.SlpCode WHERE T2.[U_CODIGO_USA] = ".$_SESSION['Usuario_Actual']." AND  T0.[DocDate] = '".date("Y/m/d")."' AND T0.[CANCELED] = 'N'";
+              $Consulta_Notificacion_Ordenes ="SELECT count(T0.[DocNum]) as Total FROM ORDR T0 INNER JOIN OSLP T2 ON T0.SlpCode = T2.SlpCode WHERE T2.[U_CODIGO_USA] = ".$_SESSION['Usuario_Actual']." AND  T0.[DocDate] = '".date('Y/m/d')."' AND T0.[CANCELED] = 'N'";
               $Resultado_Notificacion_Ordenes = odbc_exec($Conexion_SQL, $Consulta_Notificacion_Ordenes);
               $Notificaciones_Ordenes = odbc_result($Resultado_Notificacion_Ordenes, "Total");
               $Registros_Ordenes = $Notificaciones_Ordenes;
-              if ($Registros_Ordenes > 0) {  echo $Registros_Ordenes . " Registros Nuevos"; }
-              elseif ($Registros_Facturacion == 1) {  echo $Registros_Facturacion . " Registro Nuevo"; }
+              if ($Registros_Ordenes > 1) {  echo $Registros_Ordenes . " Registros Nuevos"; }
+              elseif ($Registros_Ordenes == 1) {  echo $Registros_Ordenes . " Registro Nuevo"; }
               else { echo "Sin nuevos registros"; }
              odbc_close($Conexion_SQL);  ?></small>
           </div>
@@ -265,7 +265,7 @@
               $Resultado_Notificacion_Ofertas = odbc_exec($Conexion_SQL, $Consulta_Notificacion_Ofertas);
               $Notificaciones_Ofertas = odbc_result($Resultado_Notificacion_Ofertas, "Total");
               $Registros_Ofertas = $Notificaciones_Ofertas;
-              if ($Registros_Ofertas > 0) {  echo $Registros_Ofertas . " Registros Nuevos"; }
+              if ($Registros_Ofertas > 1) {  echo $Registros_Ofertas . " Registros Nuevos"; }
               elseif ($Registros_Facturacion == 1) {  echo $Registros_Facturacion . " Registro Nuevo"; }
               else { echo "Sin nuevos registros"; }
              odbc_close($Conexion_SQL); ?></small>
@@ -283,7 +283,7 @@
               $Resultado_Notificacion_Back = odbc_exec($Conexion_SQL, $Consulta_Notificacion_Back);
               $Notificaciones_Back = odbc_result($Resultado_Notificacion_Back, "Total");
               $Registros_Back = $Notificaciones_Back;
-              if ($Registros_Back > 0) {  echo $Registros_Back . " Registros Nuevos"; }
+              if ($Registros_Back > 1) {  echo $Registros_Back . " Registros Nuevos"; }
               elseif ($Registros_Facturacion == 1) {  echo $Registros_Facturacion . " Registro Nuevo"; }
               else { echo "Sin nuevos registros"; }
              ?></small>
