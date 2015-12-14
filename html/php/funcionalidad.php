@@ -1,6 +1,9 @@
 <?php 
 session_start(0);
+
 //Variables globales del sistema.   -----------------------------------------------------------------------------------------------
+	//Zona horaria del sistema
+	date_default_timezone_set('America/Chihuahua');
 	//ID del usuario actual.
 	$_SESSION['Usuario_Actual'] = 5113; 
 	//Año actual.... Esta por defecto el del equipo, pero se busca modificarlo después

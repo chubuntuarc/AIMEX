@@ -15,7 +15,7 @@ $(document).ready(function(){
                                                                                   
               $.ajax({
                     type: "POST",
-                    url: "buscar.php",
+                    url: "facturas.php",
                     data: "b="+consulta,
                     dataType: "html",
                     beforeSend: function(){
