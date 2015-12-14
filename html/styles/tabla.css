@@ -114,3 +114,25 @@ td.text-center {
 td.text-right {
   text-align: right;
 }
+
+#Header_PDF
+{
+  background-color: #EF5350;
+}
+
+#Icono_PDF 
+{
+  width: 25px;
+  height: 25px;
+}
+
+#Header_XML
+{
+  background-color: #F9A825;
+}
+
+#Icono_XML 
+{
+  width: 25px;
+  height: 25px;
+}

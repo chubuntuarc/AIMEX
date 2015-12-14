@@ -47,3 +47,10 @@
 {
 	font-size: 12px;
 }
+
+#Titulo_Notificaciones 
+{
+	position: relative;
+	left: 8px;
+	top: -10px;
+}

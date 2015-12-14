@@ -58,7 +58,7 @@
                           <i class="fa fa-caret-down"></i>
                         </span>
                         <i><img src="images/menu.png"></i>
-                        <span class="font-normal">Dashboard</span>
+                        <span class="font-normal ">Dashboard</span>
                       </a>
                       <ul class="nav nav-sub">
                         <li>
@@ -143,7 +143,7 @@
       <a md-ink-ripple  data-toggle="modal" data-target="#aside" class="navbar-item pull-left visible-xs visible-sm"><i class="mdi-navigation-menu i-24"></i></a>
       <!-- / -->
       <!-- Titulo de la página -->
-      <div class="navbar-item pull-left h4">Dashboard</div>
+      <div class="navbar-item pull-left h4">Facturas de Clientes</div>
       <!-- /Titulo de la página -->
       <!-- Menu contextual superior derecho -->
       <ul class="nav nav-sm navbar-tool pull-right">
@@ -174,146 +174,44 @@
             <div class="row">
 <!--/Header del sistema  - - - - - - - - - - - - - - - - - - - -  - - - - - - - - - -  - - - -  - - - - - - -->
 
-<!--   Sección superior de vista de dinero - - - - - - - - - - - - - - - - - - - - - - - - - --> 
-
-    <!--Monto de facturación-->
-    <div class="col-lg-3 col-md-6 col-sm-12">
-      <div class="card" id="imagenes_superiores">
-        <form>
-          <a class="md-btn md-raised pull-left p-h-md green" id="Boton_Superior_Uno"><img src="images/monto_facturacion.png"></a>
-          <div id="titulos_superiores">
-            <label><h4>Facturas de Clientes</h4></label>
-          </div>
-          <div id="cantidades_superiores">
-            <label><h4>
-              <?php echo $facturas; ?>
-            </h4></label> 
-          </div>       
-        </form>
-      </div>
-    </div>
-    <!-- /Monto de facturación -->
-
-    <!--Ordenes de venta-->
-    <div class="col-lg-3 col-md-6 col-sm-12">
-      <div class="card" id="imagenes_superiores">
-        <form>
-          <a md-ink-ripple class="md-btn md-raised pull-left p-h-md indigo" id="Boton_Superior_Dos"><img src="images/monto_facturacion.png"></a>
-          <div id="titulos_superiores">
-            <label><h4>Ordenes de Venta</h4></label>
-          </div>
-          <div id="cantidades_superiores">
-            <label><h4><?php echo $ordenes ?>
-            </h4></label> 
-          </div>       
-        </form>
-      </div>
-    </div>
-    <!-- /Ordenes de venta-->
-
-    <!--Ofertas de venta-->
-    <div class="col-lg-3 col-md-6 col-sm-12">
-      <div class="card" id="imagenes_superiores">
-        <form>
-          <a md-ink-ripple class="md-btn md-raised pull-left p-h-md cyan" id="Boton_Superior_Tres"><img src="images/monto_facturacion.png"></a>
-          <div id="titulos_superiores">
-            <label><h4>Ofertas de Venta</h4></label>
-          </div>
-          <div id="cantidades_superiores">
-            <label><h4><?php echo $ofertas; ?>
-            </h4></label> 
-          </div>       
-        </form>
-      </div>
-    </div>
-    <!-- /Ofertas de venta-->
-
-    <!--Back order-->
-    <div class="col-lg-3 col-md-6 col-sm-12">
-      <div class="card" id="imagenes_superiores">
-        <form>
-          <a md-ink-ripple class="md-btn md-raised pull-left p-h-md purple" id="Boton_Superior_Cuatro"><img src="images/monto_facturacion.png"></a>
-          <div id="titulos_superiores">
-            <label><h4>Back Order</h4></label>
-          </div>
-          <div id="cantidades_superiores">
-            <label><h4><?php echo $back; ?>
-            </h4></label> 
-          </div>       
-        </form>
-      </div>
-    </div>
-    <!-- /Back order-->
-      
-<!--  /Sección superior de vista de dinero - - - - - - - - - - - - - - - - - - - - - - - - - --> 
-
-<!--   Sección de charts  - - - - - - - -  - - - - - - - - - - - - - - - - - - - - - - - - - --> 
-     <!-- Gráfica de ventas-->
+<!--  Sección de Tabla de Documentos - - - - - - - - - -  - - - - - - - - - - -  - - - - - - - - - - - - -->
       <div class="col-lg-9 col-md-12 col-sm-12">
-        <div class="card" id="imagenes_superiores">
-          <form>
-            <div id="tabla_ventas">
-              <label><h5 id="Titulo_Grafica">Facturas de Clientes</h5></label> <!--El titulo se modifica en base al script-->
-              <canvas id="canvas" height="450" width="1200"></canvas>
-              <!--Inputs ocultos para la consulta de los valores de las graficas-->
-              <!--El id usado en los input sirve para llevar la cadena al script JS y esconderlos usando styles/adicionales.css-->
-              <input type="text" id="campos_facturacion" value=" 
-                <?php
-                //Consultas para información de la gráfica en index   --------------------------------------------------------------------------------------------
-                    //Consulta de Facturas de Clientes
-                    $Consulta_Grafica_Facturas ="SELECT sum(T1.[TotalSumSy])AS Total FROM OINV T0  INNER JOIN INV1 T1 ON T0.DocEntry = T1.DocEntry INNER JOIN OSLP T2 ON T0.SlpCode = T2.SlpCode WHERE T0.[DocDate] >= '".$_SESSION["Anual"]."' AND  T2.[U_CODIGO_USA]  = ".$_SESSION['Usuario_Actual']." AND T1.[TargetType] <> 14 GROUP BY month(T0.[DocDate]) ORDER BY month(T0.[DocDate])";
-                    $Resultado_Consulta_Grafica = odbc_exec($Conexion_SQL, $Consulta_Grafica_Facturas);
-                    while ($fac = odbc_fetch_array($Resultado_Consulta_Grafica)) {
-                      foreach ($fac as $meses) {
-                        echo $meses.",";  //Se crea usando el foreach una cadena, la cual se divide en scripts/datosGrafica.js para llenar los campos de la gráfica
-                      }
-                    }
-                ?>
-              ">
-              <input type="text" id="campos_ordenes" value="
-                <?php
-                    //Consulta de Ordenes de Venta
-                    $Consulta_Grafica_Ordenes ="SELECT sum(T1.[TotalSumSy])AS Total FROM ORDR T0  INNER JOIN RDR1 T1 ON T0.DocEntry = T1.DocEntry INNER JOIN OSLP T2 ON T0.SlpCode = T2.SlpCode WHERE T0.[DocDate] >= '".$_SESSION["Anual"]."' AND T0.[CANCELED] = 'N' AND   T2.[U_CODIGO_USA]  = ".$_SESSION['Usuario_Actual']." GROUP BY month(T0.[DocDate]) ORDER BY month(T0.[DocDate])";
-                    $Resultado_Consulta_Grafica_Ordenes = odbc_exec($Conexion_SQL, $Consulta_Grafica_Ordenes);
-                    while ($ord = odbc_fetch_array($Resultado_Consulta_Grafica_Ordenes)) {
-                      foreach ($ord as $meses_ord) {  //Las variables en while y foreach de los input son solo para uso en ellos mismos.
-                        echo $meses_ord.",";
-                      }
-                    }
-                ?>
-              ">
-              <input type="text" id="campos_ofertas" value="
-                <?php
-                    //Consulta de Ofertas de Venta
-                    $Consulta_Grafica_Ofertas ="SELECT sum(T1.[TotalSumSy])AS Total FROM OQUT T0  INNER JOIN QUT1 T1 ON T0.DocEntry = T1.DocEntry INNER JOIN OSLP T2 ON T0.SlpCode = T2.SlpCode WHERE T0.[DocDate] >= '".$_SESSION["Anual"]."' AND T2.[U_CODIGO_USA]  = ".$_SESSION['Usuario_Actual']." GROUP BY month(T0.[DocDate]) ORDER BY month(T0.[DocDate])";
-                    $Resultado_Consulta_Grafica_Ofertas = odbc_exec($Conexion_SQL, $Consulta_Grafica_Ofertas);
-                    while ($ofe = odbc_fetch_array($Resultado_Consulta_Grafica_Ofertas)) {
-                      foreach ($ofe as $meses_ofe) {
-                        echo $meses_ofe.",";
-                      }
-                    }
-                ?>
-              ">
-              <input type="text" id="campos_back_order" value="
-                <?php
-                    //Consulta de Back Order
-                    $Consulta_Grafica_Back_Order ="SELECT SUM( T1.[OpenQty] *  T1.[Price]  ) as Total FROM ORDR T0  INNER JOIN RDR1 T1 ON T0.DocEntry = T1.DocEntry INNER JOIN OSLP T2 ON T0.SlpCode = T2.SlpCode WHERE T0.[DocDate] >= '".$_SESSION["Anual"]."' AND  T2.[U_CODIGO_USA]  = ".$_SESSION['Usuario_Actual']." group by month(T0.[DocDate]) ORDER BY month(T0.[DocDate])";
-                    $Resultado_Consulta_Grafica_Back_Order = odbc_exec($Conexion_SQL, $Consulta_Grafica_Back_Order);
-                    while ($bac = odbc_fetch_array($Resultado_Consulta_Grafica_Back_Order)) {
-                      foreach ($bac as $meses_bac) {
-                        echo $meses_bac.",";
-                      }
-                    }
-                ?>
-              ">
-              <!--/Inputs ocultos para la consulta de los valores de las graficas-->
+            <div class="panel panel-default">
+              <div class="panel-heading"><h4>Facturas de Clientes <?php echo date('d/m/Y'); ?></h4></div>
+              <table class="table table-striped " >
+                <thead>
+                  <tr>
+                    <th class="text-left" id="Header_Cliente">Documento</th> 
+                    <th class="text-left">Cliente</th>    
+                    <th class="text-left">Subtotal (USD)</th>    
+                    <th class="text-left" id="Header_Precio">Iva (USD)</th>
+                    <th class="text-left" id="Header_Precio">Total (USD)</th>
+                    <th class="text-left" id="Header_PDF">PDF</th>
+                    <th class="text-left" id="Header_XML">XML</th>
+                  </tr>
+                </thead>
+                <tbody class="table-hover">
+                  <?php 
+                      //Consulta de Facturas
+                      $Consulta_Nuevas_Facturas ="SELECT T0.[DocNum],T0.[CardName], sum(T1.[TotalSumSy]),sum(T1.[TotalSumSy]) * T1.[VatPrcnt] /100, sum(T1.[TotalSumSy]) * T1.[VatPrcnt] /100 + sum(T1.[TotalSumSy]) FROM OINV T0  INNER JOIN INV1 T1 ON T0.DocEntry = T1.DocEntry INNER JOIN OSLP T2 ON T0.SlpCode = T2.SlpCode WHERE T2.[U_CODIGO_USA] = ".$_SESSION['Usuario_Actual']." AND  T0.[DocDate] = '".date('Y/m/d')."' AND  T1.[TargetType] <> 14 GROUP BY T0.[DocNum],T0.[DocDate],T1.[VatPrcnt],T0.[CardName]";
+                      $Resultado_Consulta_Facturas = odbc_exec($Conexion_SQL, $Consulta_Nuevas_Facturas);
+                      while (odbc_fetch_array($Resultado_Consulta_Facturas)) {
+                        echo "<tr>";
+                        echo "<td class='text-left'>".odbc_result($Resultado_Consulta_Facturas, 1)."</td>";
+                        echo "<td class='text-left'>".odbc_result($Resultado_Consulta_Facturas, 2)."</td>";
+                        echo "<td class='text-left'>$".number_format(odbc_result($Resultado_Consulta_Facturas, 3),2)."</td>";
+                        echo "<td class='text-left'>$".number_format(odbc_result($Resultado_Consulta_Facturas, 4),2)."</td>";
+                        echo "<td class='text-left'>$".number_format(odbc_result($Resultado_Consulta_Facturas, 5),2)."</td>";
+                        echo "<td class='text-left'><a href='facturas/".odbc_result($Resultado_Consulta_Facturas, 1).".pdf' target='blank'><img id='Icono_PDF' src='images/pdf.png'></a></td>";
+                        echo "<td class='text-left'><a href='facturas/".odbc_result($Resultado_Consulta_Facturas, 1).".xml' target='blank'><img id='Icono_XML' src='images/xml.png'></a></td>";
+                        echo "</tr>";
+                        }
+                   ?>
+                </tbody>
+              </table>
             </div>
-          </form>
-        </div>
-      </div>  
-          <!-- / Gráfica de ventas-->
-
-<!--  /Sección de charts  - - - - - - - -  - - - - - - - - - - - - - - - - - - - - - - - - - --> 
+          </div>
+<!--  /Sección de Tabla de Documentos - - - - - - - - - -  - - - - - - - - - - -  - - - - - - - - - - - - -->
 
 <!--  Sección de notificaciones  - - - - - - - -  - - - - - - - - - - - - - - - - - - - - - - - - - --> 
 <div class="col-lg-3 col-md-6 col-sm-6">
@@ -321,7 +219,7 @@
         <label><h3 id="Titulo_Notificaciones">Notificaciones</h3></label>
         <div class="md-list-item">
           <div class="md-list-item-left circle green">
-            <a href="facturas.php" class="mdi-action-grade i-24"></a>
+             <a href="facturas.php" class="mdi-action-grade i-24"></a>
           </div>
           <div class="md-list-item-content">
             <h3 class="text-md">Facturas</h3>
@@ -394,71 +292,6 @@
       </div>
      </div>
 <!--  /Sección de notificaciones  - - - - - - - -  - - - - - - - - - - - - - - - - - - - - - - - - - --> 
-
-<!--  Sección de Rankings - - - - - - - - - -  - - - - - - - - - - -  - - - - - - - - - - - - -->
-      <!-- Top 10 Ventas-->
-      <div class="col-lg-6 col-md-12 col-sm-12">
-            <div class="panel panel-default">
-              <div class="panel-heading"><h4>Top 10 - Producto más vendido por cliente</h4></div>
-              <table class="table table-striped " >
-                <thead>
-                  <tr>
-                    <th class="text-left" id="Header_Cliente">Cliente</th> 
-                    <th class="text-left">Producto</th>    
-                    <th class="text-left">Cantidad</th>    
-                    <th class="text-left" id="Header_Precio">Precio</th>
-                  </tr>
-                </thead>
-                <tbody class="table-hover">
-                  <?php 
-                  //Sección de Ranking de Ventas y Clientes   --------------------------------------------------------------------------------------------
-                      //Consulta de Ventas
-                      $Consulta_Top_Ventas ="SELECT top 10 T1.[ItemCode] as Producto, T0.[CardName],  sum(T1.[Quantity]) as Cantidad,T1.[Price],  sum(T1.[Quantity])* T1.[Price] as Total FROM OINV T0  INNER JOIN INV1 T1 ON T0.DocEntry = T1.DocEntry INNER JOIN OSLP T2 ON T0.SlpCode = T2.SlpCode WHERE T0.[DocDate] >= '".$_SESSION["Anual"]."' AND  T2.[U_CODIGO_USA] = ".$_SESSION["Usuario_Actual"]." AND  T1.[TargetType] <> 14 GROUP BY T1.[ItemCode],T1.[Price],T0.[CardName] ORDER BY Cantidad desc";
-                      $Resultado_Consulta_Top_Ventas = odbc_exec($Conexion_SQL, $Consulta_Top_Ventas);
-                      while (odbc_fetch_array($Resultado_Consulta_Top_Ventas)) {
-                        echo "<tr>";
-                        echo "<td class='text-left' id='Top_Venta_Cliente'>".odbc_result($Resultado_Consulta_Top_Ventas, 2)."</td>";
-                        echo "<td class='text-left' id='Producto_Top'>".odbc_result($Resultado_Consulta_Top_Ventas, 1)."</td>";
-                        echo "<td class='text-left' >".number_format(odbc_result($Resultado_Consulta_Top_Ventas, 3))."</td>";
-                        echo "<td class='text-left' id='Precio_Top_Venta_Cliente'>$".number_format(odbc_result($Resultado_Consulta_Top_Ventas, 4), 2)."</td>";
-                        echo "</tr>";
-                        }
-                   ?>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        <!-- Top 10 Ventas-->
-        <!-- Top 10 Clientes-->
-      <div class="col-lg-6 col-md- col-sm-12">
-            <div class="panel panel-default">
-              <div class="panel-heading"><h4>Top 10 Clientes</h4></div>
-              <table class="table table-striped " >
-                <thead id="Top_Clientes">
-                  <tr>
-                    <th>Cliente</th>    
-                    <th>Importe</th>                 
-                  </tr>
-                </thead>
-                <tbody>
-                   <?php 
-                      //Consulta de Clientes
-                      $Consulta_Top_Clientes ="SELECT TOP 10 T0.[CardName], SUM ( T1.[TotalSumSy] ) AS Total FROM OINV T0  INNER JOIN INV1 T1 ON T0.DocEntry = T1.DocEntry INNER JOIN OSLP T2 ON T0.SlpCode = T2.SlpCode WHERE T1.[TargetType] <> 14 AND  T0.[DocDate] >='2015' AND T2.[U_CODIGO_USA] = 5113  GROUP BY T0.[CardName] ORDER BY Total DESC";
-                      $Resultado_Consulta_Top_Clientes = odbc_exec($Conexion_SQL, $Consulta_Top_Clientes);
-                      while (odbc_fetch_array($Resultado_Consulta_Top_Clientes)) {
-                        echo "<tr>";
-                        echo "<td class='text-left'>".odbc_result($Resultado_Consulta_Top_Clientes, 1)."</td>";
-                        echo "<td class='text-left'>$".number_format(odbc_result($Resultado_Consulta_Top_Clientes, 2))."</td>";
-                        echo "</tr>";
-                        }
-                   ?>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-        <!-- Top 10 Ventas-->
-<!--  /Sección de Rankings - - - - - - - - - -  - - - - - - - - - - -  - - - - - - - - - - - - -->
 
 <!--  Sección de chat de la empresa  - - - - - - - -  - - - - - - - - - - - - - - - - - - - - - - - - - --> 
   <div class="modal fade" id="user" data-backdrop="false">
@@ -643,8 +476,6 @@
 <script src="scripts/datosGrafica.js"></script>
 <!--Script que crea los tooltip de la gráfica-->
 <script src="scripts/tooltip.js"></script>
-<!--Script para notificaciones HTML5-->
-<script src="scripts/notificaciones.js"></script>
 <script src="scripts/ui-load.js"></script>
 <script src="scripts/ui-jp.config.js"></script>
 <script src="scripts/ui-jp.js"></script>
