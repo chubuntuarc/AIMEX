@@ -149,15 +149,10 @@
       <a md-ink-ripple  data-toggle="modal" data-target="#aside" class="navbar-item pull-left visible-xs visible-sm"><i class="mdi-navigation-menu i-24"></i></a>
       <!-- / -->
       <!-- Titulo de la página -->
-      <div class="navbar-item pull-left h4">Facturas de Clientes</div>
+      <div class="navbar-item pull-left h4">Ofertas de Venta</div>
       <!-- /Titulo de la página -->
       <!-- Menu contextual superior derecho -->
       <ul class="nav nav-sm navbar-tool pull-right">
-        <li>
-          <a md-ink-ripple ui-toggle-class="show" target="#search">
-            <i class="mdi-action-search i-24"></i>
-          </a>
-        </li>
         <li>
           <a md-ink-ripple data-toggle="modal" data-target="#user">
             <i class="mdi-social-person-outline i-24"></i>
@@ -178,23 +173,6 @@
       </ul>
       <div class="pull-right" ui-view="navbar@"></div>
       <!-- /Menu contextual superior derecho -->
-      <!-- Busqueda del sistema -->
-      <div id="search" class="pos-abt w-full h-full blue hide">
-        <div class="box">
-          <div class="box-col w-56 text-center">
-            <!-- hide search form -->
-            <a md-ink-ripple class="navbar-item inline"  ui-toggle-class="show" target="#search"><i class="mdi-navigation-arrow-back i-24"></i></a>
-          </div>
-          <div class="box-col v-m">
-            <!-- bind to app.search.content -->
-            <input class="form-control input-lg no-bg no-border" placeholder="Buscar factura" ng-model="app.search.content" id="busqueda">
-          </div>
-          <div class="box-col w-56 text-center">
-            <a md-ink-ripple class="navbar-item inline"><i class="mdi-av-mic i-24"></i></a>
-          </div>
-        </div>
-      </div>
-      <!-- /Busqueda del sistema -->
     </div>
       <div class="box-row">
         <div class="box-cell">
@@ -205,34 +183,29 @@
 <!--  Sección de Tabla de Documentos - - - - - - - - - -  - - - - - - - - - - -  - - - - - - - - - - - - -->
       <div class="col-lg-9 col-md-12 col-sm-12">
             <div class="panel panel-default">
-              <div class="panel-heading"><h4>Facturas de Clientes <?php echo date('d/m/Y'); ?></h4></div>
+              <div class="panel-heading"><h4>Ofertas de Venta <?php echo date('d/m/Y'); ?></h4></div>
               <table class="table table-striped " >
                 <thead>
                   <tr>
-                    <th class="text-left" >Documento</th> 
-                    <th class="text-left" id="Header_Cliente">Cliente</th>    
-                    <th class="text-left" id="Header_Cliente">Subtotal (USD)</th>    
+                    <th class="text-left" id="Header_Cliente">Documento</th> 
+                    <th class="text-left">Cliente</th>    
+                    <th class="text-left">Subtotal (USD)</th>    
                     <th class="text-left" id="Header_Precio">Iva (USD)</th>
                     <th class="text-left" id="Header_Precio">Total (USD)</th>
-                    <th class="text-left" id="Header_PDF">PDF</th>
-                    <th class="text-left" id="Header_XML">XML</th>
                   </tr>
                 </thead>
                 <tbody class="table-hover">
                   <?php 
-                      $fecha = date('Y/m/d');
-                      //Consulta de Facturas
-                      $Consulta_Nuevas_Facturas ="SELECT T0.[DocNum],T0.[CardName], sum(T1.[TotalSumSy]),sum(T1.[TotalSumSy]) * T1.[VatPrcnt] /100, sum(T1.[TotalSumSy]) * T1.[VatPrcnt] /100 + sum(T1.[TotalSumSy]) FROM OINV T0  INNER JOIN INV1 T1 ON T0.DocEntry = T1.DocEntry INNER JOIN OSLP T2 ON T0.SlpCode = T2.SlpCode WHERE T2.[U_CODIGO_USA] = ".$_SESSION['Usuario_Actual']." AND  T0.[DocDate] = '".$fecha."' AND  T1.[TargetType] <> 14 GROUP BY T0.[DocNum],T0.[DocDate],T1.[VatPrcnt],T0.[CardName]";
-                      $Resultado_Consulta_Facturas = odbc_exec($Conexion_SQL, $Consulta_Nuevas_Facturas);
-                      while (odbc_fetch_array($Resultado_Consulta_Facturas)) {
+                      //Consulta de Ofertas
+                      $Consulta_Nuevas_Ordenes ="SELECT T0.[DocNum], T0.[CardName], sum(T1.[TotalSumSy]), sum(T1.[TotalSumSy]) * T1.[VatPrcnt] /100, sum(T1.[TotalSumSy]) +   sum(T1.[TotalSumSy]) * T1.[VatPrcnt] /100 FROM OQUT T0  INNER JOIN QUT1 T1 ON T0.DocEntry = T1.DocEntry INNER JOIN OSLP T2 ON T0.SlpCode = T2.SlpCode WHERE T0.[DocDate] = '".date('Y/m/d')."' AND  T2.[U_CODIGO_USA] =".$_SESSION['Usuario_Actual']." GROUP BY T0.[DocNum], T0.[CardName], T1.[VatPrcnt]";
+                      $Resultado_Consulta_Ordenes = odbc_exec($Conexion_SQL, $Consulta_Nuevas_Ordenes);
+                      while (odbc_fetch_array($Resultado_Consulta_Ordenes)) {
                         echo "<tr>";
-                        echo "<td class='text-left'>".odbc_result($Resultado_Consulta_Facturas, 1)."</td>";
-                        echo "<td class='text-left'>".odbc_result($Resultado_Consulta_Facturas, 2)."</td>";
-                        echo "<td class='text-left'>$".number_format(odbc_result($Resultado_Consulta_Facturas, 3),2)."</td>";
-                        echo "<td class='text-left'>$".number_format(odbc_result($Resultado_Consulta_Facturas, 4),2)."</td>";
-                        echo "<td class='text-left'>$".number_format(odbc_result($Resultado_Consulta_Facturas, 5),2)."</td>";
-                        echo "<td class='text-left'><a href='facturas/".odbc_result($Resultado_Consulta_Facturas, 1).".pdf' target='blank'><img id='Icono_PDF' src='images/pdf.png'></a></td>";
-                        echo "<td class='text-left'><a href='facturas/".odbc_result($Resultado_Consulta_Facturas, 1).".xml' target='blank'><img id='Icono_XML' src='images/xml.png'></a></td>";
+                        echo "<td class='text-left'>".odbc_result($Resultado_Consulta_Ordenes, 1)."</td>";
+                        echo "<td class='text-left'>".odbc_result($Resultado_Consulta_Ordenes, 2)."</td>";
+                        echo "<td class='text-left'>$".number_format(odbc_result($Resultado_Consulta_Ordenes, 3),2)."</td>";
+                        echo "<td class='text-left'>$".number_format(odbc_result($Resultado_Consulta_Ordenes, 4),2)."</td>";
+                        echo "<td class='text-left'>$".number_format(odbc_result($Resultado_Consulta_Ordenes, 5),2)."</td>";
                         echo "</tr>";
                         }
                    ?>
@@ -248,7 +221,7 @@
         <label><h3 id="Titulo_Notificaciones">Notificaciones</h3></label>
         <div class="md-list-item">
           <div class="md-list-item-left circle green">
-             <a href="facturas.php" class="mdi-action-grade i-24"></a>
+            <a href="facturas.php" class="mdi-action-grade i-24"></a>
           </div>
           <div class="md-list-item-content">
             <h3 class="text-md">Facturas</h3>
@@ -294,7 +267,7 @@
               $Resultado_Notificacion_Ofertas = odbc_exec($Conexion_SQL, $Consulta_Notificacion_Ofertas);
               $Notificaciones_Ofertas = odbc_result($Resultado_Notificacion_Ofertas, "Total");
               $Registros_Ofertas = $Notificaciones_Ofertas;
-              if ($Registros_Ofertas > 1) {  echo $Registros_Ofertas . " Registros Nuevos"; }
+              if ($Registros_Ofertas > 0) {  echo $Registros_Ofertas . " Registros Nuevos"; }
               elseif ($Registros_Facturacion == 1) {  echo $Registros_Facturacion . " Registro Nuevo"; }
               else { echo "Sin nuevos registros"; }
              odbc_close($Conexion_SQL); ?></small>
@@ -312,7 +285,7 @@
               $Resultado_Notificacion_Back = odbc_exec($Conexion_SQL, $Consulta_Notificacion_Back);
               $Notificaciones_Back = odbc_result($Resultado_Notificacion_Back, "Total");
               $Registros_Back = $Notificaciones_Back;
-              if ($Registros_Back > 1) {  echo $Registros_Back . " Registros Nuevos"; }
+              if ($Registros_Back > 0) {  echo $Registros_Back . " Registros Nuevos"; }
               elseif ($Registros_Facturacion == 1) {  echo $Registros_Facturacion . " Registro Nuevo"; }
               else { echo "Sin nuevos registros"; }
              ?></small>
@@ -505,8 +478,6 @@
 <script src="scripts/datosGrafica.js"></script>
 <!--Script que crea los tooltip de la gráfica-->
 <script src="scripts/tooltip.js"></script>
-<!--Script que busca facturas-->
-<script src="scripts/busqueda_facturas.js"></script>
 <script src="scripts/ui-load.js"></script>
 <script src="scripts/ui-jp.config.js"></script>
 <script src="scripts/ui-jp.js"></script>

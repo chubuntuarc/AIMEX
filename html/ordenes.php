@@ -79,7 +79,13 @@
                           <a md-ink-ripple href="facturas.php">Facturas de Clientes</a>
                         </li>
                         <li>
-                          <a md-ink-ripple>Ordenes de Venta</a>
+                          <a md-ink-ripple href="ordenes.php">Ordenes de Venta</a>
+                        </li>
+                        <li>
+                          <a md-ink-ripple href="ofertas.php">Ofertas de Venta</a>
+                        </li>
+                        <li>
+                          <a md-ink-ripple href="backorder.php">Back Order</a>
                         </li>
                       </ul>
                     </li>
@@ -251,13 +257,13 @@
         </div>
         <div class="md-list-item">
           <div class="md-list-item-left circle cyan">
-            <i class="mdi-action-grade i-24"></i>
+            <a href="ofertas.php" class="mdi-action-grade i-24"></a>
           </div>
           <div class="md-list-item-content">
             <h3 class="text-md">Ofertas</h3>
             <small class="font-thin"><?php 
             //Consulta de nuevas ofertas al día
-              $Consulta_Notificacion_Ofertas ="SELECT count(T0.[DocNum]) as Total FROM OQUT T0  INNER JOIN QUT1 T1 ON T0.DocEntry = T1.DocEntry INNER JOIN OSLP T2 ON T0.SlpCode = T2.SlpCode WHERE T0.[DocDate] = '".date("Y/m/d")."' AND T2.[U_CODIGO_USA] = ".$_SESSION['Usuario_Actual']."";
+              $Consulta_Notificacion_Ofertas ="SELECT count(T0.[DocNum]) as Total FROM OQUT T0 INNER JOIN OSLP T2 ON T0.SlpCode = T2.SlpCode WHERE T0.[DocDate] = '".date('Y/m/d')."' AND  T2.[U_CODIGO_USA] =".$_SESSION['Usuario_Actual']."";
               $Resultado_Notificacion_Ofertas = odbc_exec($Conexion_SQL, $Consulta_Notificacion_Ofertas);
               $Notificaciones_Ofertas = odbc_result($Resultado_Notificacion_Ofertas, "Total");
               $Registros_Ofertas = $Notificaciones_Ofertas;
@@ -269,13 +275,13 @@
         </div>
         <div class="md-list-item">
           <div class="md-list-item-left circle purple">
-            <i class="mdi-action-grade i-24"></i>
+            <a href="backorder.php" class="mdi-action-grade i-24"></a>
           </div>
           <div class="md-list-item-content">
             <h3 class="text-md">Back Order</h3>
             <small class="font-thin"><?php 
             //Consulta de nuevas registros en back order al día
-              $Consulta_Notificacion_Back ="SELECT count(T0.[DocNum]) as Total FROM ORDR T0  INNER JOIN RDR1 T1 ON T0.DocEntry = T1.DocEntry INNER JOIN OSLP T2 ON T0.SlpCode = T2.SlpCode WHERE T0.[DocDate] = '".date("Y/m/d")."' AND  T2.[U_CODIGO_USA] = ".$_SESSION['Usuario_Actual']." AND T1.[OpenQty] <> 0";
+              $Consulta_Notificacion_Back ="SELECT count(T0.[DocNum]) as Total FROM ORDR T0  INNER JOIN OSLP T2 ON T0.SlpCode = T2.SlpCode WHERE T2.[U_CODIGO_USA] = ".$_SESSION['Usuario_Actual']." AND  T0.[DocDate] = '".date('Y/m/d')."'";
               $Resultado_Notificacion_Back = odbc_exec($Conexion_SQL, $Consulta_Notificacion_Back);
               $Notificaciones_Back = odbc_result($Resultado_Notificacion_Back, "Total");
               $Registros_Back = $Notificaciones_Back;
