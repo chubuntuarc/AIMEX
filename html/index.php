@@ -651,8 +651,6 @@
 <script src="scripts/datosGrafica.js"></script>
 <!--Script que crea los tooltip de la gráfica-->
 <script src="scripts/tooltip.js"></script>
-<!--Script para notificaciones HTML5-->
-<script src="scripts/notificaciones.js"></script>
 <script src="scripts/ui-load.js"></script>
 <script src="scripts/ui-jp.config.js"></script>
 <script src="scripts/ui-jp.js"></script>

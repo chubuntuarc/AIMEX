@@ -11,15 +11,15 @@ window.onload = function onNotificationButtonClick() {
 	}
 
 	// Si el Navegador soporta las Notificaciones HTML 5, entonces que proceda a Notificar
-	var notificacion = new Notification("Bienvenido", {
-	    icon: 'images/aimco.png',
-	    body: 'Dashboard AIMCO.'
+	var notificacion = new Notification("¿Buscas alguna factura?", {
+	    icon: 'images/notificacion.png',
+	    body: 'Nueva herramienta de busqueda.'
 	});
 
 	// Redireccionamos a un determinado Destino o URL al hacer click en la Notificación
-	notificacion.onclick = function() {
-		window.open("http://gmail.com/");
-	};					
+	/*notificacion.onclick = function() {
+		open("http://localhost/aimex/html/facturas.php");
+	};					*/
 }
 		
 // Solicitamos los Permisos del Sistema

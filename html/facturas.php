@@ -187,10 +187,7 @@
           </div>
           <div class="box-col v-m">
             <!-- bind to app.search.content -->
-              <input class="form-control input-lg no-bg no-border" placeholder="Buscar factura" ng-model="app.search.content" name="busqueda" id="busqueda" onKeyUp="buscar();">
-          </div>
-          <div class="box-col w-56 text-center">
-            <a md-ink-ripple class="navbar-item inline"><i class="mdi-av-mic i-24"></i></a>
+              <input class="form-control input-lg no-bg no-border" placeholder="Buscar factura" ng-model="app.search.content" name="busqueda" id="busqueda">
           </div>
         </div>
       </div>
@@ -205,12 +202,13 @@
 <!--  Sección de Tabla de Documentos - - - - - - - - - -  - - - - - - - - - - -  - - - - - - - - - - - - -->
       <div class="col-lg-9 col-md-12 col-sm-12">
             <div class="panel panel-default">
-              <div class="panel-heading"><h4>Facturas de Clientes <?php echo date('d/m/Y'); ?></h4></div>
-              <table class="table table-striped " >
+              <div class="panel-heading"><h4>Facturas de Clientes</h4></div>
+              <table class="table table-striped "  id="lista">
                 <thead>
                   <tr>
-                    <th class="text-left" >Documento</th> 
+                    <th class="text-left" id="Header_Documento">Documento</th> 
                     <th class="text-left" id="Header_Cliente">Cliente</th>    
+                    <th class="text-left" id="Header_Cliente">Fecha</th>    
                     <th class="text-left" id="Header_Cliente">Subtotal (USD)</th>    
                     <th class="text-left" id="Header_Precio">Iva (USD)</th>
                     <th class="text-left" id="Header_Precio">Total (USD)</th>
@@ -222,15 +220,16 @@
                   
                   <?php 
                       //Consulta de Facturas
-                      $Consulta_Nuevas_Facturas ="SELECT T0.[DocNum],T0.[CardName], sum(T1.[TotalSumSy]),sum(T1.[TotalSumSy]) * T1.[VatPrcnt] /100, sum(T1.[TotalSumSy]) * T1.[VatPrcnt] /100 + sum(T1.[TotalSumSy]) FROM OINV T0  INNER JOIN INV1 T1 ON T0.DocEntry = T1.DocEntry INNER JOIN OSLP T2 ON T0.SlpCode = T2.SlpCode WHERE T2.[U_CODIGO_USA] = ".$_SESSION['Usuario_Actual']." AND  T0.[DocDate] = '".date('Y/m/d')."' AND  T1.[TargetType] <> 14 GROUP BY T0.[DocNum],T0.[DocDate],T1.[VatPrcnt],T0.[CardName]";
+                      $Consulta_Nuevas_Facturas ="SELECT T0.[DocNum],T0.[CardName],T0.[DocDate], sum(T1.[TotalSumSy]),sum(T1.[TotalSumSy]) * T1.[VatPrcnt] /100, sum(T1.[TotalSumSy]) * T1.[VatPrcnt] /100 + sum(T1.[TotalSumSy]) FROM OINV T0  INNER JOIN INV1 T1 ON T0.DocEntry = T1.DocEntry INNER JOIN OSLP T2 ON T0.SlpCode = T2.SlpCode WHERE T2.[U_CODIGO_USA] = ".$_SESSION['Usuario_Actual']." AND  T1.[TargetType] <> 14 GROUP BY T0.[DocNum],T0.[DocDate],T1.[VatPrcnt],T0.[CardName] order by T0.[DocNum] desc";
                       $Resultado_Consulta_Facturas = odbc_exec($Conexion_SQL, $Consulta_Nuevas_Facturas);
                       while (odbc_fetch_array($Resultado_Consulta_Facturas)) {
                         echo "<tr>";
                         echo "<td class='text-left'>".odbc_result($Resultado_Consulta_Facturas, 1)."</td>";
                         echo "<td class='text-left'>".odbc_result($Resultado_Consulta_Facturas, 2)."</td>";
-                        echo "<td class='text-left'>$".number_format(odbc_result($Resultado_Consulta_Facturas, 3),2)."</td>";
+                        echo "<td class='text-left'>".odbc_result($Resultado_Consulta_Facturas, 3)."</td>";
                         echo "<td class='text-left'>$".number_format(odbc_result($Resultado_Consulta_Facturas, 4),2)."</td>";
                         echo "<td class='text-left'>$".number_format(odbc_result($Resultado_Consulta_Facturas, 5),2)."</td>";
+                        echo "<td class='text-left'>$".number_format(odbc_result($Resultado_Consulta_Facturas, 6),2)."</td>";
                         echo "<td class='text-left'><a href='facturas/".odbc_result($Resultado_Consulta_Facturas, 1).".pdf' target='blank'><img id='Icono_PDF' src='images/pdf.png'></a></td>";
                         echo "<td class='text-left'><a href='facturas/".odbc_result($Resultado_Consulta_Facturas, 1).".xml' target='blank'><img id='Icono_XML' src='images/xml.png'></a></td>";
                         echo "</tr>";
@@ -507,6 +506,8 @@
 <script src="scripts/tooltip.js"></script>
 <!--Script que busca facturas-->
 <script src="scripts/busqueda_facturas.js"></script>
+<!--Script para notificaciones HTML5-->
+<script src="scripts/notificaciones.js"></script>
 <script src="scripts/ui-load.js"></script>
 <script src="scripts/ui-jp.config.js"></script>
 <script src="scripts/ui-jp.js"></script>
