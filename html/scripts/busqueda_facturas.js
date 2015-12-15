@@ -20,7 +20,7 @@ $(document).ready(function(){
                     dataType: "html",
                     beforeSend: function(){
                           //imagen de carga
-                          $("#resultado").html("<p align='center'><img src='ajax-loader.gif' /></p>");
+                          $("#resultado").html("<p align='center'><img src='images/ajax-loader.gif' /></p>");
                     },
                     error: function(){
                           alert("No se encontro el elemento buscado");

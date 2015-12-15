@@ -238,10 +238,12 @@
                    ?>
                    <div id="resultado">
                     <?php
+                            error_reporting(0);
                             $buscar = $_POST['b'];
                             if(!empty($buscar)) {
                                   buscar($buscar);
                             }
+
                             function buscar($b) {
                                   //Consulta de Facturas
                       $Consulta_Nuevas_Facturas ="SELECT T0.[DocNum],T0.[CardName], sum(T1.[TotalSumSy]),sum(T1.[TotalSumSy]) * T1.[VatPrcnt] /100, sum(T1.[TotalSumSy]) * T1.[VatPrcnt] /100 + sum(T1.[TotalSumSy]) FROM OINV T0  INNER JOIN INV1 T1 ON T0.DocEntry = T1.DocEntry INNER JOIN OSLP T2 ON T0.SlpCode = T2.SlpCode WHERE T2.[U_CODIGO_USA] = ".$_SESSION['Usuario_Actual']." AND  T1.[TargetType] <> 14 and T0.[DocNum] Like '%%".$b."%%' GROUP BY T0.[DocNum],T0.[DocDate],T1.[VatPrcnt],T0.[CardName]";
