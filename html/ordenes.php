@@ -154,6 +154,11 @@
       <!-- Menu contextual superior derecho -->
       <ul class="nav nav-sm navbar-tool pull-right">
         <li>
+          <a md-ink-ripple ui-toggle-class="show" target="#search">
+            <i class="mdi-action-search i-24"></i>
+          </a>
+        </li>
+        <li>
           <a md-ink-ripple data-toggle="modal" data-target="#user">
             <i class="mdi-social-person-outline i-24"></i>
           </a>
@@ -173,6 +178,20 @@
       </ul>
       <div class="pull-right" ui-view="navbar@"></div>
       <!-- /Menu contextual superior derecho -->
+      <!-- Busqueda del sistema -->
+      <div id="search" class="pos-abt w-full h-full blue hide">
+        <div class="box">
+          <div class="box-col w-56 text-center">
+            <!-- hide search form -->
+            <a md-ink-ripple class="navbar-item inline"  ui-toggle-class="show" target="#search"><i class="mdi-navigation-arrow-back i-24"></i></a>
+          </div>
+          <div class="box-col v-m">
+            <!-- bind to app.search.content -->
+              <input class="form-control input-lg no-bg no-border" placeholder="Buscar factura" ng-model="app.search.content" name="busqueda" id="busqueda">
+          </div>
+        </div>
+      </div>
+      <!-- /Busqueda del sistema -->
     </div>
       <div class="box-row">
         <div class="box-cell">
@@ -180,15 +199,17 @@
             <div class="row">
 <!--/Header del sistema  - - - - - - - - - - - - - - - - - - - -  - - - - - - - - - -  - - - -  - - - - - - -->
 
+
 <!--  Sección de Tabla de Documentos - - - - - - - - - -  - - - - - - - - - - -  - - - - - - - - - - - - -->
       <div class="col-lg-9 col-md-12 col-sm-12">
             <div class="panel panel-default">
               <div class="panel-heading"><h4>Ordenes de Venta <?php echo date('d/m/Y'); ?></h4></div>
-              <table class="table table-striped " >
+              <table class="table table-striped " id="lista">
                 <thead>
                   <tr>
                     <th class="text-left" id="Header_Cliente">Documento</th> 
-                    <th class="text-left">Cliente</th>    
+                    <th class="text-left">Cliente</th>   
+                     <th class="text-left" id="Header_Cliente">Fecha</th>     
                     <th class="text-left">Subtotal (USD)</th>    
                     <th class="text-left" id="Header_Precio">Iva (USD)</th>
                     <th class="text-left" id="Header_Precio">Total (USD)</th>
@@ -197,15 +218,16 @@
                 <tbody class="table-hover">
                   <?php 
                       //Consulta de Ordenes
-                      $Consulta_Nuevas_Ordenes ="SELECT T0.[DocNum],T0.[CardName],sum(T1.[TotalSumSy]), sum(T1.[TotalSumSy]) * T1.[VatPrcnt] / 100, sum(T1.[TotalSumSy]) * T1.[VatPrcnt] / 100 + sum(T1.[TotalSumSy]) FROM ORDR T0  INNER JOIN RDR1 T1 ON T0.DocEntry = T1.DocEntry INNER JOIN OSLP T2 ON T0.SlpCode = T2.SlpCode WHERE T2.[U_CODIGO_USA] = ".$_SESSION['Usuario_Actual']." AND  T0.[DocDate] = '".date('Y/m/d')."' AND T0.[CANCELED] = 'N' GROUP BY T0.[DocNum], T0.[CardName], T1.[VatPrcnt]";
+                      $Consulta_Nuevas_Ordenes ="SELECT T0.[DocNum],T0.[CardName],T0.[DocDate], sum(T1.[TotalSumSy]), sum(T1.[TotalSumSy]) * T1.[VatPrcnt] / 100, sum(T1.[TotalSumSy]) * T1.[VatPrcnt] / 100 + sum(T1.[TotalSumSy]) FROM ORDR T0  INNER JOIN RDR1 T1 ON T0.DocEntry = T1.DocEntry INNER JOIN OSLP T2 ON T0.SlpCode = T2.SlpCode WHERE T2.[U_CODIGO_USA] = ".$_SESSION['Usuario_Actual']." AND T0.[CANCELED] = 'N' GROUP BY T0.[DocNum], T0.[CardName], T1.[VatPrcnt], T0.[DocDate] order by T0.[DocDate] desc";
                       $Resultado_Consulta_Ordenes = odbc_exec($Conexion_SQL, $Consulta_Nuevas_Ordenes);
                       while (odbc_fetch_array($Resultado_Consulta_Ordenes)) {
                         echo "<tr>";
                         echo "<td class='text-left'>".odbc_result($Resultado_Consulta_Ordenes, 1)."</td>";
                         echo "<td class='text-left'>".odbc_result($Resultado_Consulta_Ordenes, 2)."</td>";
-                        echo "<td class='text-left'>$".number_format(odbc_result($Resultado_Consulta_Ordenes, 3),2)."</td>";
+                        echo "<td class='text-left'>".odbc_result($Resultado_Consulta_Ordenes, 3)."</td>";
                         echo "<td class='text-left'>$".number_format(odbc_result($Resultado_Consulta_Ordenes, 4),2)."</td>";
                         echo "<td class='text-left'>$".number_format(odbc_result($Resultado_Consulta_Ordenes, 5),2)."</td>";
+                        echo "<td class='text-left'>$".number_format(odbc_result($Resultado_Consulta_Ordenes, 6),2)."</td>";
                         echo "</tr>";
                         }
                    ?>
@@ -478,6 +500,10 @@
 <script src="scripts/datosGrafica.js"></script>
 <!--Script que crea los tooltip de la gráfica-->
 <script src="scripts/tooltip.js"></script>
+<!--Script que busca ordenes-->
+<script src="scripts/busqueda_facturas.js"></script>
+<!--Script para notificaciones HTML5-->
+<script src="scripts/notificacion_ordenes.js"></script>
 <script src="scripts/ui-load.js"></script>
 <script src="scripts/ui-jp.config.js"></script>
 <script src="scripts/ui-jp.js"></script>

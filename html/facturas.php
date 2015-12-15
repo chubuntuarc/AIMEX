@@ -202,7 +202,7 @@
 <!--  Sección de Tabla de Documentos - - - - - - - - - -  - - - - - - - - - - -  - - - - - - - - - - - - -->
       <div class="col-lg-9 col-md-12 col-sm-12">
             <div class="panel panel-default">
-              <div class="panel-heading"><h4>Facturas de Clientes</h4></div>
+              <div class="panel-heading"><h4>Facturas de Clientes <?php echo date('d/m/Y'); ?></h4></div>
               <table class="table table-striped "  id="lista">
                 <thead>
                   <tr>
