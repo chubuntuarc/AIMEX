@@ -37,7 +37,7 @@
 
 @media only screen and (max-width: 479px)
 {
-	#Top_Venta_Cliente, #Header_Cliente, #Precio_Top_Venta_Cliente, #Header_Precio
+	#Top_Venta_Cliente, #Header_Cliente, #Precio_Top_Venta_Cliente, #Header_Precio, #Row
 	{
 			display:none!important;
 	}

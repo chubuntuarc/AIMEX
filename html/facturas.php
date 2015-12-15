@@ -206,12 +206,12 @@
               <table class="table table-striped "  id="lista">
                 <thead>
                   <tr>
-                    <th class="text-left" id="Header_Documento">Documento</th> 
+                    <th class="text-left" >Documento</th> 
                     <th class="text-left" id="Header_Cliente">Cliente</th>    
                     <th class="text-left" id="Header_Cliente">Fecha</th>    
-                    <th class="text-left" id="Header_Cliente">Subtotal (USD)</th>    
-                    <th class="text-left" id="Header_Precio">Iva (USD)</th>
-                    <th class="text-left" id="Header_Precio">Total (USD)</th>
+                    <th class="text-left" id="Header_Cliente">Subtotal</th>    
+                    <th class="text-left" id="Header_Precio">Iva</th>
+                    <th class="text-left" id="Header_Precio">Total</th>
                     <th class="text-left" id="Header_PDF">PDF</th>
                     <th class="text-left" id="Header_XML">XML</th>
                   </tr>
@@ -225,11 +225,11 @@
                       while (odbc_fetch_array($Resultado_Consulta_Facturas)) {
                         echo "<tr>";
                         echo "<td class='text-left'>".odbc_result($Resultado_Consulta_Facturas, 1)."</td>";
-                        echo "<td class='text-left'>".odbc_result($Resultado_Consulta_Facturas, 2)."</td>";
-                        echo "<td class='text-left'>".odbc_result($Resultado_Consulta_Facturas, 3)."</td>";
-                        echo "<td class='text-left'>$".number_format(odbc_result($Resultado_Consulta_Facturas, 4),2)."</td>";
-                        echo "<td class='text-left'>$".number_format(odbc_result($Resultado_Consulta_Facturas, 5),2)."</td>";
-                        echo "<td class='text-left'>$".number_format(odbc_result($Resultado_Consulta_Facturas, 6),2)."</td>";
+                        echo "<td class='text-left' id='Row'>".odbc_result($Resultado_Consulta_Facturas, 2)."</td>";
+                        echo "<td class='text-left' id='Row'>".odbc_result($Resultado_Consulta_Facturas, 3)."</td>";
+                        echo "<td class='text-left' id='Row'>$".number_format(odbc_result($Resultado_Consulta_Facturas, 4),2)."</td>";
+                        echo "<td class='text-left' id='Row'>$".number_format(odbc_result($Resultado_Consulta_Facturas, 5),2)."</td>";
+                        echo "<td class='text-left' id='Row'>$".number_format(odbc_result($Resultado_Consulta_Facturas, 6),2)."</td>";
                         echo "<td class='text-left'><a href='facturas/".odbc_result($Resultado_Consulta_Facturas, 1).".pdf' target='blank'><img id='Icono_PDF' src='images/pdf.png'></a></td>";
                         echo "<td class='text-left'><a href='facturas/".odbc_result($Resultado_Consulta_Facturas, 1).".xml' target='blank'><img id='Icono_XML' src='images/xml.png'></a></td>";
                         echo "</tr>";

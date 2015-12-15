@@ -11,9 +11,9 @@ window.onload = function onNotificationButtonClick() {
 	}
 
 	// Si el Navegador soporta las Notificaciones HTML 5, entonces que proceda a Notificar
-	var notificacion = new Notification("¿Buscas algun registro?", {
+	var notificacion = new Notification("¿Buscas algún registro?", {
 	    icon: 'images/notificacion.png',
-	    body: 'Nueva herramienta de busqueda.'
+	    body: 'Nueva herramienta de búsqueda.'
 	});
 
 	// Redireccionamos a un determinado Destino o URL al hacer click en la Notificación

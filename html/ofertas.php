@@ -209,9 +209,9 @@
                     <th class="text-left" id="Header_Cliente">Documento</th> 
                     <th class="text-left">Cliente</th> 
                      <th class="text-left" id="Header_Cliente">Fecha</th>     
-                    <th class="text-left">Subtotal (USD)</th>    
-                    <th class="text-left" id="Header_Precio">Iva (USD)</th>
-                    <th class="text-left" id="Header_Precio">Total (USD)</th>
+                    <th class="text-left">Subtotal</th>    
+                    <th class="text-left" id="Header_Precio">Iva</th>
+                    <th class="text-left">Total</th>
                   </tr>
                 </thead>
                 <tbody class="table-hover">
@@ -222,10 +222,10 @@
                       while (odbc_fetch_array($Resultado_Consulta_Ordenes)) {
                         echo "<tr>";
                         echo "<td class='text-left'>".odbc_result($Resultado_Consulta_Ordenes, 1)."</td>";
-                        echo "<td class='text-left'>".odbc_result($Resultado_Consulta_Ordenes, 2)."</td>";
-                        echo "<td class='text-left'>".odbc_result($Resultado_Consulta_Ordenes, 3)."</td>";
+                        echo "<td class='text-left' id='Row'>".odbc_result($Resultado_Consulta_Ordenes, 2)."</td>";
+                        echo "<td class='text-left' id='Row'>".odbc_result($Resultado_Consulta_Ordenes, 3)."</td>";
                         echo "<td class='text-left'>$".number_format(odbc_result($Resultado_Consulta_Ordenes, 4),2)."</td>";
-                        echo "<td class='text-left'>$".number_format(odbc_result($Resultado_Consulta_Ordenes, 5),2)."</td>";
+                        echo "<td class='text-left' id='Row'>$".number_format(odbc_result($Resultado_Consulta_Ordenes, 5),2)."</td>";
                         echo "<td class='text-left'>$".number_format(odbc_result($Resultado_Consulta_Ordenes, 6),2)."</td>";
                         echo "</tr>";
                         }
