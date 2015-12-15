@@ -187,7 +187,7 @@
           </div>
           <div class="box-col v-m">
             <!-- bind to app.search.content -->
-            <input class="form-control input-lg no-bg no-border" placeholder="Buscar factura" ng-model="app.search.content" id="busqueda">
+              <input class="form-control input-lg no-bg no-border" placeholder="Buscar factura" ng-model="app.search.content" name="busqueda" id="busqueda" onKeyUp="buscar();">
           </div>
           <div class="box-col w-56 text-center">
             <a md-ink-ripple class="navbar-item inline"><i class="mdi-av-mic i-24"></i></a>
@@ -236,32 +236,6 @@
                         echo "</tr>";
                         }
                    ?>
-                   <div id="resultado">
-                    <?php
-                            error_reporting(0);
-                            $buscar = $_POST['b'];
-                            if(!empty($buscar)) {
-                                  buscar($buscar);
-                            }
-
-                            function buscar($b) {
-                                  //Consulta de Facturas
-                      $Consulta_Nuevas_Facturas ="SELECT T0.[DocNum],T0.[CardName], sum(T1.[TotalSumSy]),sum(T1.[TotalSumSy]) * T1.[VatPrcnt] /100, sum(T1.[TotalSumSy]) * T1.[VatPrcnt] /100 + sum(T1.[TotalSumSy]) FROM OINV T0  INNER JOIN INV1 T1 ON T0.DocEntry = T1.DocEntry INNER JOIN OSLP T2 ON T0.SlpCode = T2.SlpCode WHERE T2.[U_CODIGO_USA] = ".$_SESSION['Usuario_Actual']." AND  T1.[TargetType] <> 14 and T0.[DocNum] Like '%%".$b."%%' GROUP BY T0.[DocNum],T0.[DocDate],T1.[VatPrcnt],T0.[CardName]";
-                      $Resultado_Consulta_Facturas = odbc_exec($Conexion_SQL, $Consulta_Nuevas_Facturas);
-                      while (odbc_fetch_array($Resultado_Consulta_Facturas)) {
-                        echo "<tr>";
-                        echo "<td class='text-left'>".odbc_result($Resultado_Consulta_Facturas, 1)."</td>";
-                        echo "<td class='text-left'>".odbc_result($Resultado_Consulta_Facturas, 2)."</td>";
-                        echo "<td class='text-left'>$".number_format(odbc_result($Resultado_Consulta_Facturas, 3),2)."</td>";
-                        echo "<td class='text-left'>$".number_format(odbc_result($Resultado_Consulta_Facturas, 4),2)."</td>";
-                        echo "<td class='text-left'>$".number_format(odbc_result($Resultado_Consulta_Facturas, 5),2)."</td>";
-                        echo "<td class='text-left'><a href='facturas/".odbc_result($Resultado_Consulta_Facturas, 1).".pdf' target='blank'><img id='Icono_PDF' src='images/pdf.png'></a></td>";
-                        echo "<td class='text-left'><a href='facturas/".odbc_result($Resultado_Consulta_Facturas, 1).".xml' target='blank'><img id='Icono_XML' src='images/xml.png'></a></td>";
-                        echo "</tr>";
-                        }
-                            }
-                      ?>
-                  </div>
                 </tbody>
               </table>
             </div>
