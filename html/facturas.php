@@ -16,8 +16,7 @@
   <link rel="stylesheet" href="styles/app.css" type="text/css" />
   <link rel="stylesheet" type="text/css" href="styles/adicionales.css">
   <link rel="stylesheet" type="text/css" href="styles/tabla.css">
-  <link rel="stylesheet" type="text/css" href="styles/ventana_emerge.css">
-
+  <link rel="stylesheet" type="text/css" href="styles/demo.css">
 </head>
 <body>
 <div class="app">
@@ -219,14 +218,13 @@
                   </tr>
                 </thead>
                 <tbody class="table-hover">
-                  
                   <?php 
                       //Consulta de Facturas
                       $Consulta_Nuevas_Facturas ="SELECT T0.[DocNum],T0.[CardName],T0.[DocDate], sum(T1.[TotalSumSy]),sum(T1.[TotalSumSy]) * T1.[VatPrcnt] /100, sum(T1.[TotalSumSy]) * T1.[VatPrcnt] /100 + sum(T1.[TotalSumSy]) FROM OINV T0  INNER JOIN INV1 T1 ON T0.DocEntry = T1.DocEntry INNER JOIN OSLP T2 ON T0.SlpCode = T2.SlpCode WHERE T2.[U_CODIGO_USA] = ".$_SESSION['Usuario_Actual']." AND  T1.[TargetType] <> 14 GROUP BY T0.[DocNum],T0.[DocDate],T1.[VatPrcnt],T0.[CardName] order by T0.[DocNum] desc";
                       $Resultado_Consulta_Facturas = odbc_exec($Conexion_SQL, $Consulta_Nuevas_Facturas);
                       while (odbc_fetch_array($Resultado_Consulta_Facturas)) {
                         echo "<tr>";
-                        echo "<td class='osx demo' name='osx' value='Demo'>".odbc_result($Resultado_Consulta_Facturas, 1)."</td>";
+                        echo "<td class='text-left' id='Folio' onclick='overlay()'>".odbc_result($Resultado_Consulta_Facturas, 1)."</td>";
                         echo "<td class='text-left' id='Row'>".odbc_result($Resultado_Consulta_Facturas, 2)."</td>";
                         echo "<td class='text-left' id='Row'>".odbc_result($Resultado_Consulta_Facturas, 3)."</td>";
                         echo "<td class='text-left' id='Row'>$".number_format(odbc_result($Resultado_Consulta_Facturas, 4),2)."</td>";
@@ -242,6 +240,19 @@
             </div>
           </div>
 <!--  /Sección de Tabla de Documentos - - - - - - - - - -  - - - - - - - - - - -  - - - - - - - - - - - - -->
+
+<!--  Sección de información de documento  - - - - - - - -  - - - - - - - - - - - - - - - - - - - - - - - - - --> 
+<div id="overlay">
+     <div id="contorno">
+        <div id="overlay_header"><p>Detalles de documento</p></div>
+        <h3 id="overlay_documento">Documento 6608</h3>
+       
+
+          <p>Content you want the user to see goes here.</p>
+          <a href='#' onclick='overlay()'>Cerrar</a>
+     </div>
+</div>
+<!--  Sección de información de documento  - - - - - - - -  - - - - - - - - - - - - - - - - - - - - - - - - - --> 
 
 <!--  Sección de notificaciones  - - - - - - - -  - - - - - - - - - - - - - - - - - - - - - - - - - --> 
 <div class="col-lg-3 col-md-6 col-sm-6">
@@ -511,8 +522,8 @@
 <script src="scripts/busqueda_facturas.js"></script>
 <!--Script para notificaciones HTML5-->
 <script src="scripts/notificaciones.js"></script>
-<!--Script para ventanas emergentes-->
-<script src="scripts/ventana_emerge.js"></script>
+<!--Script para pop up-->
+<script src="scripts/demo.js"></script>
 <script src="scripts/ui-load.js"></script>
 <script src="scripts/ui-jp.config.js"></script>
 <script src="scripts/ui-jp.js"></script>
