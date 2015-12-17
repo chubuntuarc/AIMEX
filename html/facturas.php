@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <title>AIMCO Corporation de México</title>
-  <link rel="icon" type="image/png" href="/images/favicon-16x16.png" />
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
   <meta name="description" content="Sitio corporativo de AIMCO de México" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <link rel="stylesheet" href="../libs/assets/animate.css/animate.css" type="text/css" />
@@ -17,6 +17,7 @@
   <link rel="stylesheet" type="text/css" href="styles/adicionales.css">
   <link rel="stylesheet" type="text/css" href="styles/tabla.css">
   <link rel="stylesheet" type="text/css" href="styles/demo.css">
+  
 </head>
 <body>
 <div class="app">
