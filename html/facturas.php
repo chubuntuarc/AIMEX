@@ -16,6 +16,8 @@
   <link rel="stylesheet" href="styles/app.css" type="text/css" />
   <link rel="stylesheet" type="text/css" href="styles/adicionales.css">
   <link rel="stylesheet" type="text/css" href="styles/tabla.css">
+  <link rel="stylesheet" type="text/css" href="styles/ventana_emerge.css">
+
 </head>
 <body>
 <div class="app">
@@ -224,7 +226,7 @@
                       $Resultado_Consulta_Facturas = odbc_exec($Conexion_SQL, $Consulta_Nuevas_Facturas);
                       while (odbc_fetch_array($Resultado_Consulta_Facturas)) {
                         echo "<tr>";
-                        echo "<td class='text-left'>".odbc_result($Resultado_Consulta_Facturas, 1)."</td>";
+                        echo "<td class='osx demo' name='osx' value='Demo'>".odbc_result($Resultado_Consulta_Facturas, 1)."</td>";
                         echo "<td class='text-left' id='Row'>".odbc_result($Resultado_Consulta_Facturas, 2)."</td>";
                         echo "<td class='text-left' id='Row'>".odbc_result($Resultado_Consulta_Facturas, 3)."</td>";
                         echo "<td class='text-left' id='Row'>$".number_format(odbc_result($Resultado_Consulta_Facturas, 4),2)."</td>";
@@ -496,6 +498,7 @@
 <!--Sección de scripts - - - - - - - -  - - - - - - -  - - - - - - - - -  - - - - - - -->
 <!--Librerias de JQuery-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="scripts/jquery.simplemodal.js"></script>
 <script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
 <script src="../libs/jquery/waves/dist/waves.js"></script>
 <!--Script de la grafica de ventas-->
@@ -508,6 +511,8 @@
 <script src="scripts/busqueda_facturas.js"></script>
 <!--Script para notificaciones HTML5-->
 <script src="scripts/notificaciones.js"></script>
+<!--Script para ventanas emergentes-->
+<script src="scripts/ventana_emerge.js"></script>
 <script src="scripts/ui-load.js"></script>
 <script src="scripts/ui-jp.config.js"></script>
 <script src="scripts/ui-jp.js"></script>
@@ -516,7 +521,6 @@
 <script src="scripts/ui-form.js"></script>
 <script src="scripts/ui-waves.js"></script>
 <script src="scripts/ui-client.js"></script>
-
 <!--/Sección de scripts - - - - - - - -  - - - - - - -  - - - - - - - - -  - - - - - - -->
 </body>
 </html>

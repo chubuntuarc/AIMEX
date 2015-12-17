@@ -187,7 +187,7 @@
           </div>
           <div class="box-col v-m">
             <!-- bind to app.search.content -->
-              <input class="form-control input-lg no-bg no-border" placeholder="Buscar factura" ng-model="app.search.content" name="busqueda" id="busqueda">
+              <input class="form-control input-lg no-bg no-border" placeholder="Buscar factura" ng-model="app.search.content" name="busqueda" id="busqueda" value="<?php echo date('Y-m-d'); ?>">
           </div>
         </div>
       </div>
