@@ -245,11 +245,10 @@
 <!--  Sección de información de documento  - - - - - - - -  - - - - - - - - - - - - - - - - - - - - - - - - - --> 
 <div id="overlay">
      <div id="contorno">
-        <div id="overlay_header"><p>Detalles de documento</p></div>
         <h3 id="overlay_documento">Documento 6608</h3>
-       
-
-          <p>Content you want the user to see goes here.</p>
+          <p>Cliente: FORD MOTOR COMPANY</p>
+          <p>Estatus: Cerrado</p>
+          <p>Moneda: USD</p>
           <a href='#' onclick='overlay()'>Cerrar</a>
      </div>
 </div>
