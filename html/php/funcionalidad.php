@@ -13,6 +13,9 @@ session_start(0);
 	//Fecha hasta la que se haran las consultas.
 	$_SESSION["Fecha_Final"] = $_SESSION["Anual"]."-12-31"; 	
 
+	//Fecha hasta la que se haran las consultas.
+	$_SESSION["Folio_Detalle_Factura"]; 
+
 //Fin de Variables globales del sistema.   -----------------------------------------------------------------------------------------------
 
 //Conexión a SQL Server usando el driver ODBC de Windows.  ------------------------------------------------------------------------------

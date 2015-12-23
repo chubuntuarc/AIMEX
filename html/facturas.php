@@ -245,10 +245,7 @@
 <!--  Sección de información de documento  - - - - - - - -  - - - - - - - - - - - - - - - - - - - - - - - - - --> 
 <div id="overlay">
      <div id="contorno">
-        <h3 id="overlay_documento">Documento 6608</h3>
-          <p>Cliente: FORD MOTOR COMPANY</p>
-          <p>Estatus: Cerrado</p>
-          <p>Moneda: USD</p>
+          <?php include('php/detalle_factura.php'); ?>
           <a href='#' onclick='overlay()'>Cerrar</a>
      </div>
 </div>
